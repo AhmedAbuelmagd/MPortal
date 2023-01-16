@@ -1,0 +1,17 @@
+[
+    {
+        "id": 0,
+        "title":"Category",
+        "placeholder": "Select Category",
+        "name":"",
+        "image": ""
+    },
+    {
+        "id": 1,
+        "title":"Subcategory",
+        "placeholder": "Select subcategory",
+        "name":"",
+        "image": "Permissions"
+    }
+]
+
