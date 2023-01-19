@@ -11,12 +11,8 @@ import Foundation
 struct Children: Codable {
     var id: Int?
     var name: String?
-    var description: String?
-    var image: String?
-    var slug: String?
-    var children: String?
-    var circle_icon: String?
-    var disable_shipping: Int?
+    var child: Bool?
+    var parent: Int?
     var isSelected: Bool?
 }
 

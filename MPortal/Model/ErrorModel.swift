@@ -9,7 +9,6 @@
 import Foundation
 
 struct ErrorModel: Codable, LocalizedError {
-    
     var message: String?
     var errorDescription: String?{
         return message ?? ""

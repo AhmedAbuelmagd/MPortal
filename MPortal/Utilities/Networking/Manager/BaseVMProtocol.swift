@@ -7,8 +7,6 @@
 //
 
 import Foundation
-//import RxSwift
-//import RxCocoa
 
 protocol BaseVMProtocol {
     var showLoading: Bindable<Bool> { get set }

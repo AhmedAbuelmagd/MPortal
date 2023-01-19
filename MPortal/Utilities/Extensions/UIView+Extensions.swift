@@ -16,6 +16,20 @@ extension UIView{
         layer.cornerRadius = frame.height / 2
     }
     
+    func addShadow(scale: Bool = true) {
+        //shadow
+        layer.shadowRadius = 1
+        layer.shadowColor = UIColor(hexString: Colors.C707070.rawValue).cgColor
+        layer.shadowOpacity = 0.5
+        layer.shadowOffset = CGSize(width: 0, height: 0)
+        layer.shouldRasterize = true
+        layer.rasterizationScale = scale ? UIScreen.main.scale : 1
+        layer.masksToBounds = false
+        layer.cornerRadius = 8
+        //        self.clipsToBounds = true
+        layer.masksToBounds = false
+    }
+    
     func addRadius(radius : CGFloat) {
         self.layer.cornerRadius = radius*iPhoneXFactor
     }

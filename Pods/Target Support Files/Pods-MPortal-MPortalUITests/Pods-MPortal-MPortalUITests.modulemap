@@ -1,0 +1,6 @@
+framework module Pods_MPortal_MPortalUITests {
+  umbrella header "Pods-MPortal-MPortalUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

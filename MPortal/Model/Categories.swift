@@ -13,7 +13,6 @@ struct Categories: Codable {
     var name: String?
     var description: String?
     var image: String?
-    
     var slug: String?
     var children: [Children]?
     var circle_icon: String?

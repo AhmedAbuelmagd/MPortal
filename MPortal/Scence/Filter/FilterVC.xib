@@ -37,6 +37,9 @@
                             <state key="normal" image="blackClose">
                                 <color key="titleColor" systemColor="labelColor"/>
                             </state>
+                            <connections>
+                                <action selector="dismissBtnClicked:" destination="-1" eventType="touchUpInside" id="Rik-CC-o3Q"/>
+                            </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NnY-Xg-1cg">
                             <rect key="frame" x="175.66666666666666" y="10" width="39" height="5"/>
@@ -61,7 +64,7 @@
                                     </constraints>
                                 </imageView>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lvL-5g-w2N">
-                                    <rect key="frame" x="40" y="3" width="279" height="34"/>
+                                    <rect key="frame" x="35" y="3" width="284" height="34"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
@@ -73,7 +76,7 @@
                                 <constraint firstItem="Z0m-rR-eAf" firstAttribute="top" secondItem="rGH-9I-xdr" secondAttribute="top" constant="10" id="FrP-G0-kQI"/>
                                 <constraint firstAttribute="bottom" secondItem="lvL-5g-w2N" secondAttribute="bottom" constant="3" id="Ndk-Xd-7uU"/>
                                 <constraint firstAttribute="trailing" secondItem="lvL-5g-w2N" secondAttribute="trailing" constant="32" id="Tpx-lb-Ll9"/>
-                                <constraint firstItem="lvL-5g-w2N" firstAttribute="leading" secondItem="Z0m-rR-eAf" secondAttribute="trailing" constant="10" id="dOG-My-6mL"/>
+                                <constraint firstItem="lvL-5g-w2N" firstAttribute="leading" secondItem="Z0m-rR-eAf" secondAttribute="trailing" constant="5" id="dOG-My-6mL"/>
                                 <constraint firstItem="Z0m-rR-eAf" firstAttribute="leading" secondItem="rGH-9I-xdr" secondAttribute="leading" constant="10" id="t1I-oM-5nP"/>
                             </constraints>
                         </view>

@@ -9,8 +9,6 @@
 import Foundation
 import UIKit
 import SystemConfiguration
-//import SwiftMessages
-//import MOLH
 
 class Internet {
     //MARK: - handle Connection
@@ -34,29 +32,5 @@ class Internet {
         let needsConnection = flags.contains(.connectionRequired)
         return (isReachable && !needsConnection)
     }
-//     class func handleReachability(withRech rech: CheckConnection, fromController controller: UIViewController, withInternetCheck isConnected: Bool) {
-//        NotificationCenter.default.addObserver(forName: .reachabilityChanged, object: rech, queue: .main) { (notification) in
-////            if let MyRechability = notification.object as? CheckConnection {
-//////                switch MyRechability.connection {
-//////                case .cellular:
-//////                    if isConnected {
-////////                        showAlertMsg(message: "AHMED", Theme: .success, image: true)
-////////                        showAlertMsg(message: "connected", Theme: .success, image: false)
-//////                    }else{
-//////
-//////                    }
-//////                case .wifi:
-//////                    if isConnected{
-////////                        showAlertMsg(message: "AHMED", Theme: .success, image: true)
-//////                        showAlertMsg(message: "connected", Theme: .success, image: false)
-//////                    }else{
-//////                        showAlertMsg(message: "not connected", Theme: .success, image: false)
-//////                    }
-//////                case .none:
-//////                    showAlertMsg(message: "connected", Theme: .success, image: false)
-//////                }
-////            }
-//        }
-//    }
 }
 

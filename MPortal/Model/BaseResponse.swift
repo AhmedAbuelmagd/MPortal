@@ -7,6 +7,7 @@
 //
 
 import Foundation
+
 struct BaseResponse<E : Codable> : Codable {
     var code: Int?
     var msg: String?

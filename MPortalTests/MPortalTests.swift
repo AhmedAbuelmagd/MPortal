@@ -8,30 +8,100 @@
 
 import XCTest
 @testable import MPortal
+import Moya
+
 
 final class MPortalTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    
+    var homeRemoteManager: HomeRemoteManager!
+    
+    override func setUp() {
+        super.setUp()
+        
+        let endpointClosure = { (target: HomeAPIs) -> Endpoint in
+            let url = URL(target: target).absoluteString
+            
+            return Endpoint(url: url, sampleResponseClosure: {.networkResponse(200, target.sampleData)}, method: target.method, task: target.task, httpHeaderFields: target.headers)
         }
+        
+        var requestManager: RequestManagerProtocol = RequestManager()
+        homeRemoteManager = HomeRemoteManager(requestManager: requestManager, provider: MoyaProvider<HomeAPIs>(endpointClosure: endpointClosure, stubClosure: MoyaProvider.immediatelyStub))
     }
-
+    
+    
+    override func tearDown() {
+        homeRemoteManager = nil
+    }
+    
+    
+    func test_Categories() {
+        //Arrange
+        let expectation = XCTestExpectation(description: "Get category data successfully")
+        
+        var categories: BaseResponse<CategoriesData>?
+        //Act
+        self.homeRemoteManager.getAllCategories { result in
+            switch result{
+            case .success(let result):
+                categories = result
+                expectation.fulfill()
+            case .failure(let error):
+                print(error, "error")
+            }
+        }
+        wait(for: [expectation], timeout: 10)
+        
+        // Assert
+        XCTAssertNotNil(categories)
+        XCTAssertEqual(categories?.data?.categories?.count, 13)
+        XCTAssertEqual(categories?.data?.categories?.first?.id, 1)
+    }
+    
+    func test_Get_Properties() {
+        //Arrange
+        let expectation = XCTestExpectation(description: "Get Properties data successfully")
+        
+        var properties: BaseResponse<[PropertiesModel]>?
+        //Act
+        
+        self.homeRemoteManager.getProperties(cat: "3") { result in
+            switch result{
+            case .success(let result):
+                properties = result
+                expectation.fulfill()
+            case .failure(let error):
+                print(error, "error")
+            }
+        }
+        
+        wait(for: [expectation], timeout: 10)
+        
+        // Assert
+        XCTAssertNotNil(properties)
+        XCTAssertEqual(properties?.data?.count, 13)
+        XCTAssertEqual(properties?.data?.first?.id, 1)
+    }
+    func test_Get_OptionsChild() {
+        //Arrange
+        let expectation = XCTestExpectation(description: "Get Options Child data successfully")
+        
+        var options: BaseResponse<[PropertiesModel]>?
+        //Act
+        self.homeRemoteManager.getOptionsChild(id: 1){ result in
+            switch result{
+            case .success(let result):
+                options = result
+                expectation.fulfill()
+            case .failure(let error):
+                print(error, "error")
+            }
+        }
+        wait(for: [expectation], timeout: 10)
+        
+        // Assert
+        XCTAssertNotNil(options)
+        XCTAssertEqual(options?.data?.count, 1)
+        XCTAssertEqual(options?.data?.first?.id, 647)
+    }
+    
 }

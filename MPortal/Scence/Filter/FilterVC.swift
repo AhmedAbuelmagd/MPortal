@@ -6,20 +6,17 @@
 //  Copyright © 2023 Ahmed Abuelmagd. All rights reserved.
 //
 
-enum filterType{
-    case Category
-    case SubCategory
-    case Options
-}
+
 import UIKit
 
 protocol FilterDeleget: NSObjectProtocol {
-    func categoryClicked(category: Categories)
-    func subCategoryClicked(subcategory: Children)
+    func categoryClicked(categories: [Categories])
+    func subCategoryClicked(childrens: [Children])
+    func optionClicked(option: [Children], CategoryIndex: Int, child: Bool)
 }
 
 class FilterVC: UIViewController {
-
+    
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var filterTV: UITableView!
@@ -27,49 +24,29 @@ class FilterVC: UIViewController {
     @IBOutlet weak var searchTxtField: UITextField!
     
     weak var delegte: FilterDeleget?
-    
-    var type: filterType = .Category
+    var type: FilterType = .Category
     var coordinator: HomeCoordinator?
     var proId: Int?
     var filterList: CategoriesData?
     var filterChildren: [Children]?
     var childrens = [Children]()
     var categories = [Categories]()
-    var optionsData = [Options]()
-//    var tVCellHeight = 50*iPhoneXFactor
-    var filteTitle = ""
-    private var homeVM: HomeVMProtocol!
-    init(homeVM: HomeVMProtocol) {
-        super.init(nibName: nil, bundle: nil)
-        self.homeVM = homeVM
-    }
+    var optionsData: [Children]?
+    var options = [Children]()
+    var CategoryIndex: Int?
+    var categoryId: Int?
     
-    required init?(coder: NSCoder) { fatalError(ERRORS.VIEW_MODEL_ERROR.title) }
+    var filteTitle = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        switch type{
-        case .Category:
-            categories = filterList?.categories ?? []
-        case .SubCategory:
-            childrens = filterChildren ?? []
-            print(childrens, "SSSSSSSSSSSS")
-        case .Options: print("Option")
-            bindViewModel()
-            homeVM.optionId = proId
-            homeVM.getOptionsChild()
-        }
-        
-        titleLbl.customLabel(color: .C515D76, size: .size_16, font: .W500, text: filteTitle)
-        searchView.addRadius(radius: 5*iPhoneXFactor)
-        searchTxtField.customTxtField(color: .C515D76, size: .size_14, font: .W400, placeholder: "Search...", text: "", isPassword: false)
-        searchTxtField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
-        
-        initTV(tv: filterTV)
-        setupGestureRecognizers()
-        mainView.layer.cornerRadius = 20
-        // Do any additional setup after loading the view.
+        initUI()
     }
+    @IBAction func dismissBtnClicked(_ sender: UIButton) {
+        self.dismiss(animated: true)
+    }
+    
+    
     @objc func textFieldDidChange(_ textField: UITextField) {
         switch type{
         case .Category:
@@ -79,11 +56,11 @@ class FilterVC: UIViewController {
             if searchTxtField.text?.isEmpty == true{ self.childrens = filterChildren ?? [] }
             else{ self.childrens = ( filterChildren ?? []).filter { $0.name?.lowercased().contains(searchTxtField.text?.lowercased() ?? "") ?? false}}
         case .Options: print("")
-            if searchTxtField.text?.isEmpty == true{ self.optionsData = homeVM.optionsData.value.options ?? [] }
-            else{ self.optionsData = ( homeVM.optionsData.value.options ?? []).filter { $0.name?.lowercased().contains(searchTxtField.text?.lowercased() ?? "") ?? false}}
+            if searchTxtField.text?.isEmpty == true{ self.options = optionsData ?? [] }
+            else{ self.options = ( optionsData ?? []).filter { $0.name?.lowercased().contains(searchTxtField.text?.lowercased() ?? "") ?? false}}
         }
         
-
+        
         filterTV.reloadData()
     }
     
@@ -92,7 +69,7 @@ class FilterVC: UIViewController {
         leftSwipe.direction = UISwipeGestureRecognizer.Direction.down
         view.addGestureRecognizer(leftSwipe)
     }
-
+    
     @objc func swipeAction(swipe: UISwipeGestureRecognizer) {
         self.dismiss(animated: true)
     }
@@ -102,39 +79,37 @@ class FilterVC: UIViewController {
         tv.registerNib(cellClass: FilterTVCell.self)
         tv.estimatedRowHeight = 300
     }
-    func bindViewModel(){
-        
-        // MARK: - bind loading
-        homeVM.showLoading.bind { [weak self] visible in
-            guard let self = self else { return }
-//            visible ? self.showLoader() : self.hideLoader()
-        }
-        
-        // MARK: - bind error message
-        homeVM.onShowError = { message in
-//            displayMessage(message: message, messageError: true)
-        }
-        
-        // MARK: - bind success message
-        homeVM.optionsData.bind { [weak self] options in
-            guard let self = self else { return }
-            if let data = options.options{
-                self.optionsData = data
-            }
-            self.filterTV.reloadData()
-        }
-        
-        
-    }
-
+    
 }
-extension FilterVC: UITableViewDataSource, UITableViewDelegate{
+extension FilterVC{
+    func initUI(){
+        switch type{
+        case .Category:
+            categories = filterList?.categories ?? []
+        case .SubCategory:
+            childrens = filterChildren ?? []
+        case .Options: options = optionsData ?? []
+        }
+        
+        titleLbl.customLabel(color: .C515D76, size: .size_16, font: .W700, text: filteTitle)
+        searchView.addRadius(radius: 5*iPhoneXFactor)
+        searchTxtField.customTxtField(color: .C515D76, size: .size_13, font: .W400, placeholder: LBLs.SEARCH.title, text: "", isPassword: false)
+        searchTxtField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
+        
+        initTV(tv: filterTV)
+        setupGestureRecognizers()
+        mainView.layer.cornerRadius = 20
+    }
+}
 
+
+extension FilterVC: UITableViewDataSource, UITableViewDelegate{
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch type{
         case .Category: return categories.count
         case .SubCategory: return childrens.count
-        case .Options: return optionsData.count
+        case .Options: return options.count
         }
         
     }
@@ -148,7 +123,7 @@ extension FilterVC: UITableViewDataSource, UITableViewDelegate{
         switch type{
         case .Category: cell.initCell(cellData: categories[indexPath.row])
         case .SubCategory: cell.initCell(cellData: childrens[indexPath.row])
-        case .Options: cell.initCell(cellData: optionsData[indexPath.row])
+        case .Options: cell.initCell(cellData: options[indexPath.row])
         }
         return cell
     }
@@ -159,14 +134,21 @@ extension FilterVC: UITableViewDataSource, UITableViewDelegate{
                 categories[index].isSelected = false
             }
             categories[indexPath.row].isSelected = true
-            delegte?.categoryClicked(category: categories[indexPath.row])
+            delegte?.categoryClicked(categories: categories)
+            
         case .SubCategory:
             for index in 0..<(childrens.count){
                 childrens[index].isSelected = false
             }
             childrens[indexPath.row].isSelected = true
-            delegte?.subCategoryClicked(subcategory: childrens[indexPath.row])
-        case .Options: print("")
+            
+            delegte?.subCategoryClicked(childrens: childrens)
+        case .Options:
+            for index in 0..<(options.count){
+                options[index].isSelected = false
+            }
+            options[indexPath.row].isSelected = true
+            delegte?.optionClicked(option: options, CategoryIndex: CategoryIndex ?? 0, child: options[indexPath.row].child ?? false)
         }
         
         filterTV.reloadData()

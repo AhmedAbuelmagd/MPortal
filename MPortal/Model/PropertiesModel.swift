@@ -13,12 +13,14 @@ struct PropertiesModel: Codable {
     var name: String?
     var description: String?
     var slug: String?
-    var parent: String?
+    var parent: Int?
+    var categoryParentId: Int?
+    var selectedOption: String?
+    var selectedId: Int?
     var list: Bool?
     var type: String?
     var value: String?
     var other_value: String?
-    var options: [Options]?
-
+    var options: [Children]?
 }
 

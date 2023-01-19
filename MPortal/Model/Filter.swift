@@ -7,11 +7,11 @@
 //
 
 import Foundation
+
 struct Filter: Codable {
     var id: Int?
     var name: String?
     var title: String?
     var image: String?
     var placeholder: String?
-
 }

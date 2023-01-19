@@ -11,19 +11,15 @@ import Moya
 import MOLH
 
 enum HomeEndPoint: String, CaseIterable {
-    
     case GET_ALL_CATEGORIES = "get_all_cats"
     case PROPERTIES = "properties"
     case GET_OPTIONS_CHILD = "get-options-child"
 }
 
 enum HomeAPIs {
-    
-    
     case getAllCategories
     case getProperties(cat: String)
     case getOptionsChild(id: Int)
-    
 }
 
 extension HomeAPIs: TargetType {
@@ -44,20 +40,27 @@ extension HomeAPIs: TargetType {
         return .get
     }
     
-    var sampleData: Data {
-        return Data()
-    }
-
     var parameters: [String: Any]? {
-            switch self {
-            case .getProperties(let cat):
-                var parameters = [String: Any]()
-                parameters["cat"] = cat
-                return parameters
-            default:
-                return nil
-            }
+        switch self {
+        case .getProperties(let cat):
+            var parameters = [String: Any]()
+            parameters["cat"] = cat
+            return parameters
+        default:
+            return nil
         }
+    }
+    
+    var sampleData: Data {
+        switch self{
+            
+        case .getAllCategories: return loadLocalJsonFile(fileName: FileName.MOCK_CATEGORY_DATA.rawValue)
+        case .getProperties: return loadLocalJsonFile(fileName: FileName.MOCK_PROPERTIES_DATA.rawValue)
+        case .getOptionsChild: return loadLocalJsonFile(fileName: FileName.MOCK_OPTIONS_DATA.rawValue)
+            
+        }
+        
+    }
     
     var task: Task {
         
@@ -65,20 +68,18 @@ extension HomeAPIs: TargetType {
         case .getAllCategories: return .requestPlain
         case .getProperties: return .requestParameters(parameters: parameters ?? [:], encoding: URLEncoding.default)
         case .getOptionsChild: return .requestPlain
-            
-            
-            
         }
     }
     
     var headers: [String : String]? {
-        
         return ["Accept-Language": MOLHLanguage.currentAppleLanguage(),"Content-Type": "application/json"]
-        
     }
 }
-
-
-//var parameterEncoding: ParameterEncoding {
-//        return JSONEncoding.default
-//    }
+extension HomeAPIs {
+    func loadLocalJsonFile(fileName: String) -> Data {
+        guard let url = Bundle.main.url(forResource: fileName, withExtension: Extensions.JSON.rawValue) else {
+            fatalError()
+        }
+        return try! Data(contentsOf: url)
+    }
+}

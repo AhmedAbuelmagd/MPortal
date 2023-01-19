@@ -7,20 +7,20 @@
 //
 
 import UIKit
-import Combine
-
-import RxSwift
-import RxCocoa
 
 class HomeVC: UIViewController {
-
+    
+    @IBOutlet weak var homeTV: UITableView!
+    @IBOutlet weak var continueBtn: UIButton!
+    
     var coordinator: HomeCoordinator?
-    let disposeBag = DisposeBag()
     private var homeVM: HomeVMProtocol!
     var category = Categories()
-    var childrens = Children()
-    @IBOutlet weak var homeTV: UITableView!
-    @IBOutlet weak var fff: UIButton!
+    var categoryId = 0
+    var childrens: Children?
+    var addedProperty = PropertiesModel(name: "select value", options: [])
+    var insertedCatId = 0
+    var ads_banners: [Ads_banners]?
     var tVCellHeight = 60*iPhoneXFactor
     init(homeVM: HomeVMProtocol) {
         super.init(nibName: nil, bundle: nil)
@@ -31,41 +31,64 @@ class HomeVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        initUI()
+    }
+    
+    @IBAction func continueBtnBtnClicked(_ sender: Any) {
+        coordinator?.productDatails(ads_banners: self.ads_banners ?? [])
+    }
+}
+extension HomeVC{
+    func initUI(){
         initTV(tv: homeTV)
         bindViewModel()
         homeVM.getFilterList()
         homeVM.getAllCategories()
+        continueBtn.addRadius(radius: 8)
+        continueBtn.custom(titleColor: .MainColor, font: .W500, size: .size_14, title: .NEXT_STEP)
     }
-    
-    @IBAction func fdfdf(_ sender: Any) {
-        coordinator?.productDatails()
-    }
-}
-extension HomeVC{
     func bindViewModel(){
         
         // MARK: - bind loading
         homeVM.showLoading.bind { [weak self] visible in
             guard let self = self else { return }
-//            visible ? self.showLoader() : self.hideLoader()
+            visible ? self.showLoader() : self.hideLoader()
         }
         
         // MARK: - bind error message
         homeVM.onShowError = { message in
-//            displayMessage(message: message, messageError: true)
+            displayMessage(message: message, messageError: true)
         }
         
-        // MARK: - bind success message
+        // MARK: - bind filterList
         homeVM.filterList.bind { [weak self] filterList in
             guard let self = self else { return }
             self.homeTV.reloadData()
         }
-        homeVM.categoriesData.bind { [weak self] filterList in
+        // MARK: - categoriesData
+        homeVM.categoriesData.bind { [weak self] categories in
             guard let self = self else { return }
-//            self.homeTV.reloadData()
+            self.ads_banners = categories.ads_banners
         }
         homeVM.propertiesList.bind { [weak self] filterList in
             guard let self = self else { return }
+            self.homeTV.reloadData()
+        }
+        // MARK: - bind optionsData
+        homeVM.optionsData.bind { [weak self] options in
+            guard let self = self else { return }
+            var properties = options
+            for index in 0..<properties.count{
+                properties[index].categoryParentId = self.categoryId
+            }
+            for index in 0..<self.homeVM.propertiesList.value.count{
+                if (self.homeVM.propertiesList.value[index].categoryParentId ?? 0) == self.categoryId{
+                    mainQueue {
+                        self.homeVM.propertiesList.value.remove(at: index)
+                    }
+                }
+            }
+            self.homeVM.propertiesList.value.insert(contentsOf: properties, at: self.insertedCatId + 1)
             self.homeTV.reloadData()
         }
         
@@ -87,7 +110,6 @@ extension HomeVC: UITableViewDataSource, UITableViewDelegate{
         case 1: return self.homeVM.propertiesList.value.count
         default: return 0
         }
-//        return 2
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -100,42 +122,11 @@ extension HomeVC: UITableViewDataSource, UITableViewDelegate{
         case 0: cell.initCell(cellData: homeVM.filterList.value[indexPath.row], index: indexPath.row, section: indexPath.section)
         case 1: cell.initCell(cellData: homeVM.propertiesList.value[indexPath.row], index: indexPath.row, section: indexPath.section)
         default: print("")
-                            
+            
         }
-//        switch section{
-//        case 0: cell.initCell(title: homeVM.filterList.value[])
-//        case 1: return self.category.children?.count ?? 0
-//        case 2: return 1
-//        default: return 0
-//        }
         cell.delegte = self
         return cell
     }
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-////        switch indexPath.section{
-////        case 0:
-////            switch indexPath.row{
-////            case 0: coordinator?.filter(categories: homeVM.categoriesData.value, title: "Category", delegate: self, type: .Category)
-////            case 1:
-////                if let data = self.category.children{
-////                coordinator?.filter(title: "Sub category", delegate: self, type: .SubCategory, childrens: data)
-////                print(self.category.children?.count, "vdvdvdv")
-////            }else{
-////                print(self.category.children?.count, "vdvdvdv")
-////
-////            }
-////            default: print("")
-////            }
-////        case 1:
-////            if self.homeVM.propertiesList.value[indexPath.row].options?.count != 0{
-////                print(indexPath.section, self.homeVM.propertiesList.value[indexPath.row].options?.count, "have data opbdfbdfbdfbdfbdf")
-////            }else{
-////                print("not have opbdfbdfbdfbdfbdf")
-////            }
-////
-////        default: print("")
-////        }
-//    }
 }
 
 extension HomeVC: HomeTVCellDeleget{
@@ -143,43 +134,79 @@ extension HomeVC: HomeTVCellDeleget{
         switch section{
         case 0:
             switch index{
-            case 0:
-                coordinator?.filter(categories: homeVM.categoriesData.value, title: "Category", delegate: self, type: .Category)
+            case 0: coordinator?.filter(categories: homeVM.categoriesData.value, title: LBLs.CATEGORY.title, delegate: self, type: .Category)
             case 1:
                 if let data = self.category.children{
-                coordinator?.filter(title: "Sub category", delegate: self, type: .SubCategory, childrens: data)
-                print(self.category.children?.count, "vdvdvdv")
-            }else{
-                print(self.category.children?.count, "vdvdvdv")
-                
-            }
+                    coordinator?.filter(title: LBLs.SUB_CATEGORY.title, delegate: self, type: .SubCategory, childrens: data)
+                }else{
+                    displayMessage(message: LBLs.MAIN_CATEGORY_FIRST.title, messageError: true)
+                }
             default: print("")
             }
         case 1:
-            if self.homeVM.propertiesList.value[index].options?.count != 0{
-                coordinator?.filter(title: homeVM.propertiesList.value[index].name ?? "", delegate: self, type: .Options, proId: homeVM.propertiesList.value[index].id ?? 0)
-//                print(indexPath.section, self.homeVM.propertiesList.value[index].options?.count, "have data opbdfbdfbdfbdfbdf")
-            }else{
-                print("not have opbdfbdfbdfbdfbdf")
+            self.categoryId = self.homeVM.propertiesList.value[index].id ?? 0
+            if (self.homeVM.propertiesList.value[index].options != nil) && self.homeVM.propertiesList.value[index].options?.count != 0{
+                coordinator?.filter(title: homeVM.propertiesList.value[index].name ?? "", delegate: self, type: .Options, optionsData: self.homeVM.propertiesList.value[index].options, CategoryIndex: index, categoryId: category.id)
             }
             
         default: print("")
         }
-//        coordinator?.filter(filterList: homeVM.categoriesData.value, title: "Category", delegate: self, type: .Category)
     }
 }
 extension HomeVC: FilterDeleget{
-    func subCategoryClicked(subcategory: Children) {
-        self.homeVM.cat = "\(subcategory.id ?? 0)"
-        self.homeVM.getProperties()
-        self.childrens = subcategory
-        homeVM.filterList.value[1].name = subcategory.name ?? ""
+    func optionClicked(option: [Children], CategoryIndex: Int, child: Bool) {
+        for index in 0..<option.count{
+            if option[index].isSelected == true{
+                if (option[index].id ?? 0) == 222{ //if user choose other option
+                    self.homeVM.propertiesList.value[CategoryIndex].options = option
+                    self.homeVM.propertiesList.value.insert(addedProperty, at: CategoryIndex + 1)
+                    self.homeVM.propertiesList.value[CategoryIndex].selectedId = 222
+                    self.homeVM.propertiesList.value[CategoryIndex].selectedOption = option[index].name ?? ""
+                }else{
+                    if (self.homeVM.propertiesList.value[CategoryIndex].selectedId ?? 0) == 222{
+                        self.homeVM.propertiesList.value[CategoryIndex].selectedOption = option[index].name ?? ""
+                        self.homeVM.propertiesList.value[CategoryIndex].options = option
+                        self.homeVM.propertiesList.value.remove(at: CategoryIndex+1)
+                    }else{
+                        
+                        self.homeVM.propertiesList.value[CategoryIndex].selectedOption = option[index].name ?? ""
+                        self.homeVM.propertiesList.value[CategoryIndex].options = option
+                        if child{
+                            homeTV.reloadData()
+                            self.insertedCatId = CategoryIndex
+                            homeVM.optionId = option[index].id
+                            homeVM.getOptionsChild()
+                        }
+                    }
+                }
+            }
+        }
         homeTV.reloadData()
     }
     
-    func categoryClicked(category categort: Categories) {
-        homeVM.filterList.value[0].name = categort.name ?? ""
-        self.category = categort
+    func categoryClicked(categories: [Categories]) {
+        homeVM.categoriesData.value.categories = categories
+        for index in 0..<categories.count{
+            if categories[index].isSelected == true{
+                self.category = categories[index]
+                homeVM.propertiesList.value.removeAll()
+                homeVM.filterList.value[0].name = category.name ?? ""
+                homeVM.filterList.value[1].name = ""
+            }
+        }
+        homeTV.reloadData()
+    }
+    
+    func subCategoryClicked(childrens: [Children]) {
+        for index in 0..<(childrens.count){
+            if childrens[index].isSelected == true{
+                self.category.children = childrens
+                self.childrens = childrens[index]
+                homeVM.filterList.value[1].name = childrens[index].name ?? ""
+                self.homeVM.cat = "\(childrens[index].id ?? 0)"
+                self.homeVM.getProperties()
+            }
+        }
         homeTV.reloadData()
     }
 }

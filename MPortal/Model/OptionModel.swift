@@ -9,7 +9,6 @@
 import Foundation
 
 struct OptionModel: Codable {
-    
     var id: Int?
     var name: String?
     var description: String?
@@ -19,7 +18,6 @@ struct OptionModel: Codable {
     var type: String?
     var value: String?
     var other_value: String?
-    var options: [Options]?
-
+    var options: [Children]?
 }
 

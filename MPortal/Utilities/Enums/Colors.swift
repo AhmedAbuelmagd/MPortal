@@ -53,6 +53,13 @@ enum Colors: String, CaseIterable {
     case CFF6666 = "#FF6666"
     case CEAF9FE = "#EAF9FE"
     case C4AB778 = "#4AB778"
+    case C707070 = "#707070"
+    case CF45B14 = "#F45B14"
+    case C1D1D1D = "#1D1D1D"
+    case C44215D = "#44215D"
+    case C808080 = "#808080"
+    case CD20653 = "#D20653"
+    case CD9D9D9 = "#D9D9D9"
    
     
     var hex: UIColor {
@@ -62,4 +69,5 @@ enum Colors: String, CaseIterable {
         return UIColor(hexString: self.rawValue).cgColor
     }
 }
+
 

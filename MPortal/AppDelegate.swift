@@ -7,14 +7,17 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
+import MOLH
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var coordinator: MainCoordinator?
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
+        MOLH.shared.activate(true)
+        IQKeyboardManager.shared.enable = true
         assignMainCoordinator()
         
         return true

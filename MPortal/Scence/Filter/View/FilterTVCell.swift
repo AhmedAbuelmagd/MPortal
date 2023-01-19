@@ -9,46 +9,24 @@
 import UIKit
 
 class FilterTVCell: UITableViewCell {
-
+    
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var checkImg: UIImageView!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     
 }
 
 extension FilterTVCell{
     func initCell(cellData: Categories){
-        if cellData.isSelected ?? false{
-            checkImg.image = UIImage(named: "check>24#MainColor")
-        }else{
-            checkImg.image = UIImage(named: "")
-        }
-        nameLbl.customLabel(color: .C515D76, size: .size_01, font: .W300, text: (cellData.name ?? "").lowercased())
+        namageData(isSelected: cellData.isSelected ?? false, title: cellData.name ?? "")
     }
     func initCell(cellData: Children){
-        if cellData.isSelected ?? false{
-            checkImg.image = UIImage(named: "check>24#MainColor")
-        }else{
-            checkImg.image = UIImage(named: "")
-        }
-        nameLbl.customLabel(color: .C515D76, size: .size_01, font: .W300, text: (cellData.name ?? "").lowercased())
+        namageData(isSelected: cellData.isSelected ?? false, title: cellData.name ?? "")
     }
     func initCell(cellData: Options){
-        if cellData.isSelected ?? false{
-            checkImg.image = UIImage(named: "check>24#MainColor")
-        }else{
-            checkImg.image = UIImage(named: "")
-        }
-        nameLbl.customLabel(color: .C515D76, size: .size_01, font: .W300, text: (cellData.name ?? "").lowercased())
+        namageData(isSelected: cellData.isSelected ?? false, title: cellData.name ?? "")
+    }
+    func namageData(isSelected: Bool, title: String){
+        checkImg.image = isSelected ? Images.CHECK.image : Images.NONE.image
+        nameLbl.customLabel(color: isSelected ? .CF45B14:.C515D76, size: .size_13, font: .W400, text: title.lowercased())
     }
 }

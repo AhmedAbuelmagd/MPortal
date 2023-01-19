@@ -1,0 +1,34 @@
+/* 
+  Localizable.strings
+  MPortal
+
+  Created by Ahmed Abuelmagd on 17/01/2023.
+  Copyright © 2023 Ahmed Abuelmagd. All rights reserved.
+*/
+//MARK: - Fonts
+"font_Black"="Cairo-Black";
+"font_ExtraBold"="Cairo-Black";
+"font_Bold"="Cairo-ExtraBold";
+"font_SemiBold"="Cairo-Bold";
+"font_Medium"="Cairo-SemiBold";
+"eFont_Medium"="Poppins-Medium";
+"font_Regular"="Cairo-Medium";
+"font_Light"="Cairo-Regular";
+"rFont_SemiBold"="Poppins-SemiBold";
+"aFont_SemiBold"="Cairo-Bold";
+"rFont_Bold"="Poppins-Bold";
+// MARK: - LBLs Enum
+
+"selectLbl"="تحديد ";
+"selectCategoryLbl"="تحديد التصنيف";
+"selectSubcategoryLbl"="تحديد التصنيف الفرعي";
+"categoryLbl"="التصنيف";
+"subcategoryLbl"="التصنيف الفرعي";
+"searchLbl"="بحث...";
+"mainCategoryFirstLbl"="الرجاء تحديد التصنيف الرئيسي اولا";
+"otherLbl"="آخر";
+"selectYourLangLbl"="من فضلك قم بإختيار اللغة.";
+"langNoteLbl"="لاحظ ان اللغة الأساسية هي الانجليزية.";
+// MARK: - BTNs Enum
+"nextStepBtn"="الخطوة التالية";
+"continueBtn"="إستمرار";

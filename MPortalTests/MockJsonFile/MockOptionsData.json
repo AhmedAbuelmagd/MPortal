@@ -1,0 +1,103 @@
+{
+    "code": 200,
+    "msg": "option child",
+    "data": [
+        {
+            "id": 647,
+            "name": "Model",
+            "description": null,
+            "slug": "model",
+            "parent": 55,
+            "list": false,
+            "type": null,
+            "value": "",
+            "other_value": null,
+            "options": [
+                {
+                    "id": 38288,
+                    "name": "SERIES 1",
+                    "slug": "series-1",
+                    "parent": 647,
+                    "child": true
+                },
+                {
+                    "id": 38289,
+                    "name": "SERIES 2",
+                    "slug": "series-2",
+                    "parent": 647,
+                    "child": true
+                },
+                {
+                    "id": 38290,
+                    "name": "SERIES 3",
+                    "slug": "series-3",
+                    "parent": 647,
+                    "child": true
+                },
+                {
+                    "id": 38291,
+                    "name": "SERIES 4",
+                    "slug": "series-4",
+                    "parent": 647,
+                    "child": true
+                },
+                {
+                    "id": 38292,
+                    "name": "SERIES 5",
+                    "slug": "series-5",
+                    "parent": 647,
+                    "child": true
+                },
+                {
+                    "id": 38293,
+                    "name": "SERIES 6",
+                    "slug": "series-6",
+                    "parent": 647,
+                    "child": true
+                },
+                {
+                    "id": 38294,
+                    "name": "SERIES 7",
+                    "slug": "series-7",
+                    "parent": 647,
+                    "child": true
+                },
+                {
+                    "id": 38295,
+                    "name": "SERIES 8",
+                    "slug": "series-8",
+                    "parent": 647,
+                    "child": true
+                },
+                {
+                    "id": 51379,
+                    "name": "SERIES I",
+                    "slug": "series-i",
+                    "parent": 647,
+                    "child": true
+                },
+                {
+                    "id": 51377,
+                    "name": "SERIES M",
+                    "slug": "series-m",
+                    "parent": 647,
+                    "child": true
+                },
+                {
+                    "id": 51376,
+                    "name": "SERIES X",
+                    "slug": "series-x",
+                    "parent": 647,
+                    "child": true
+                },
+                {
+                    "id": 51378,
+                    "name": "SERIES Z",
+                    "slug": "series-z",
+                    "parent": 647,
+                    "child": true
+                }
+            ]
+        }
+    ]
+}

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+
 struct Options: Codable {
     var id: Int?
     var name: String?
@@ -14,6 +15,5 @@ struct Options: Codable {
     var parent: Int?
     var child: Bool?
     var isSelected: Bool?
-
 }
 

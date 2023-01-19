@@ -28,37 +28,33 @@ class HomeTVCell: UITableViewCell {
         super.awakeFromNib()
         mainView.addBorder()
         mainView.addRadius(radius: 5)
-        
-        // Initialization code
     }
     
     @IBAction func chooseCategoriesBtnClicked(_ sender: UIButton) {
         delegte?.homeTVCellBtnClicked(index: index, section: section, isDate: false)
     }
-    
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     func initCell(cellData: Filter, index: Int, section: Int){
+        chooseCategoriesBtn.isHidden = false
         txtFiels.text = ""
         self.section = section
         self.index = index
-        titleLbl.customLabel(color: .C515D76, size: .size_09, font: .W300, text: cellData.title ?? "")
-        txtFiels.customTxtField(color: .C515D76, size: .size_14, font: .W400, placeholder: "\((cellData.placeholder ?? "").lowercased())", text: (cellData.name ?? "").lowercased(), isPassword: false)
+        titleLbl.customLabel(color: .C515D76, size: .size_13, font: .W400, text: (cellData.title ?? "").localized)
+        txtFiels.customTxtField(color: .C515D76, size: .size_13, font: .W400, placeholder: "\((cellData.placeholder ?? "").localized)", text: (cellData.name ?? "").lowercased(), isPassword: false)
     }
     func initCell(cellData: PropertiesModel, index: Int, section: Int){
         txtFiels.text = ""
         self.section = section
         self.index = index
-        if cellData.options?.count == 0{
+        if (cellData.options != nil) && cellData.options?.count == 0{
             chooseCategoriesBtn.isHidden = true
             arrowImg.isHidden = true
+        }else{
+            chooseCategoriesBtn.isHidden = false
+            arrowImg.isHidden = false
         }
-        titleLbl.customLabel(color: .C515D76, size: .size_09, font: .W300, text: cellData.name ?? "")
-        txtFiels.customTxtField(color: .C515D76, size: .size_14, font: .W400, placeholder: "Select \(cellData.name ?? "")", text: "", isPassword: false)
+        titleLbl.customLabel(color: .C515D76, size: .size_13, font: .W400, text: cellData.name ?? "")
+        txtFiels.customTxtField(color: .C515D76, size: .size_13, font: .W400, placeholder: "\(LBLs.SELECT.title)\(cellData.name ?? "")", text: cellData.selectedOption ?? "", isPassword: false)
     }
     
 }
