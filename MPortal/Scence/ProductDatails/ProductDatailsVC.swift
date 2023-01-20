@@ -31,6 +31,16 @@ class ProductDatailsVC: UIViewController {
     @IBOutlet weak var pricesListView: TagListView!
     @IBOutlet weak var auctionCurrentPriceLbl: UILabel!
     @IBOutlet weak var auctionCPriceValueLbl: UILabel!
+    @IBOutlet weak var startAfterLbl: UILabel!
+    @IBOutlet weak var dateLbl: UILabel!
+    @IBOutlet weak var dateValueLbl: UILabel!
+    @IBOutlet weak var dateHourLbl: UILabel!
+    
+    @IBOutlet weak var counterLbl: UILabel!
+    @IBOutlet weak var dayLbl: UILabel!
+    @IBOutlet weak var hourLbl: UILabel!
+    @IBOutlet weak var minuteLbl: UILabel!
+    
     
     
     
@@ -64,6 +74,16 @@ class ProductDatailsVC: UIViewController {
 
 extension ProductDatailsVC{
     func initUI(){
+        dayLbl.customLabel(color: .CFDBC01, size: .size_08, font: .W600, text: "يوم")
+        hourLbl.customLabel(color: .CFDBC01, size: .size_08, font: .W600, text: "ساعه")
+        minuteLbl.customLabel(color: .CFDBC01, size: .size_08, font: .W600, text: "دقيقة")
+        counterLbl.customLabel(color: .CFDBC01, size: .size_18, font: .W600, text: "31 :22:55")
+        
+        dateValueLbl.customLabel(color: .C44215D, size: .size_18, font: .W600, text: "19-01-2023")
+        dateHourLbl.customLabel(color: .C44215D, size: .size_13, font: .W300, text: "13:59:00")
+        startAfterLbl.customLabel(color: .C808080, size: .size_11, font: .W300, text: "المزاد يبدأ بعد")
+        dateLbl.customLabel(color: .C808080, size: .size_11, font: .W300, text: "بتاريخ")
+        
         pricesListView.addTag("+1000")
         pricesListView.addTag("+2000")
         pricesListView.addTag("+3000")
@@ -83,8 +103,8 @@ extension ProductDatailsVC{
         priceTxtField.customTxtField(color: .C1D1D1D, size: .size_13, font: .W400, placeholder:TxtFields.WRITE_PRICE.title, text: "")
         priceView.addRadius(radius: 6)
 
-        datesView.addRadius(radius: 13)
-        datesView.addShadow()
+        datesView.addRadius(radius: 6)
+//        datesView.addShadow()
         pageControlView.circleCornerRadius()
         print(ads_banners.count, "ads_banners count")
         startTimer()

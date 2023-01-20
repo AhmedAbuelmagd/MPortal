@@ -13,6 +13,7 @@ enum Size: Int {
 
     case size_01 = 01
     case size_07 = 07
+    case size_08 = 08
     case size_09 = 09
     case size_10 = 10
     case size_11 = 11

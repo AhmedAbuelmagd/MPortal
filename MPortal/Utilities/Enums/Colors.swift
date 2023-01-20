@@ -60,6 +60,7 @@ enum Colors: String, CaseIterable {
     case C808080 = "#808080"
     case CD20653 = "#D20653"
     case CD9D9D9 = "#D9D9D9"
+    case CFDBC01 = "#FDBC01"
    
     
     var hex: UIColor {
