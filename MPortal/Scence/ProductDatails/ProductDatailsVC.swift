@@ -42,9 +42,18 @@ class ProductDatailsVC: UIViewController {
     @IBOutlet weak var minuteLbl: UILabel!
     @IBOutlet weak var buynowBtn: UIButton!
     @IBOutlet weak var withdrawaBtn: UIButton!
+    @IBOutlet weak var priceNowTitleLbl: UILabel!
+    @IBOutlet weak var priceNowValueLbl: UILabel!
     
+    @IBOutlet weak var auctionPriceNowLbl: UILabel!
+    @IBOutlet weak var auctionPriceAfterTaxLbl: UILabel!
     
+    @IBOutlet weak var auctionNameLbl: UILabel!
+    @IBOutlet weak var auctionCodeLbl: UILabel!
+    @IBOutlet weak var auctionDetailsLbl: UILabel!
     
+    @IBOutlet var arrowsImg: [UIImageView]!
+    @IBOutlet weak var auctionRateLbl: UILabel!
     
     
     
@@ -80,6 +89,20 @@ extension ProductDatailsVC{
         for btn in [buynowBtn,withdrawaBtn]{
             btn?.addRadius(radius: 4)
         }
+        if MOLHLanguage.isArabic(){
+            for arrowImg in arrowsImg{
+                arrowImg.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
+            }
+        }
+        auctionNameLbl.customLabel(color: .C1D1D1D, size: .size_18, font: .W600, text: "اسم المزاد")
+        auctionCodeLbl.customLabel(color: .C808080, size: .size_13, font: .W300, text: "code 1234")
+        auctionDetailsLbl.customLabel(color: .CD20653, size: .size_14, font: .W400, text: "تفاصيل المزاد")
+        auctionRateLbl.customLabel(color: .CD20653, size: .size_14, font: .W400, text: "تقييم المزاد")
+        auctionPriceNowLbl.customLabel(color: .C808080, size: .size_13, font: .W300, text: "القيمة الحالية للمزاد")
+        auctionPriceAfterTaxLbl.customLabel(color: .C808080, size: .size_13, font: .W300, text: "القيمة الحالية بعد الضريبة")
+        priceNowTitleLbl.customLabel(color: .C1D1D1D, size: .size_13, font: .W600, text: "سعر الشراء الفوري")
+        priceNowValueLbl.customLabel(color: .C44215D, size: .size_18, font: .W600, text: "200 $")
+        
         buynowBtn.custom(titleColor: .CFFFFFF, size: .size_12, title: .BUY_NOW)
         withdrawaBtn.custom(titleColor: .CFFFFFF, size: .size_13, title: .WITHDRAWAL)
         dayLbl.customLabel(color: .CFDBC01, size: .size_08, font: .W600, text: "يوم")
