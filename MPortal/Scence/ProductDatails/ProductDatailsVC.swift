@@ -29,6 +29,8 @@ class ProductDatailsVC: UIViewController {
     @IBOutlet weak var productsTV: UITableView!
     @IBOutlet weak var sendBtn: UIButton!
     @IBOutlet weak var pricesListView: TagListView!
+    @IBOutlet weak var auctionCurrentPriceLbl: UILabel!
+    @IBOutlet weak var auctionCPriceValueLbl: UILabel!
     
     
     
@@ -63,9 +65,11 @@ class ProductDatailsVC: UIViewController {
 extension ProductDatailsVC{
     func initUI(){
         pricesListView.addTag("+1000")
-        pricesListView.addTag("+1000")
-//        pricesListView.delegate = self
+        pricesListView.addTag("+2000")
+        pricesListView.addTag("+3000")
+        auctionCPriceValueLbl.customLabel(color: .C44215D, size: .size_21, font: .W500, text: "200 $")
         
+        auctionCurrentPriceLbl.customLabel(color: .C1D1D1D, size: .size_13, font: .W300, text: LBLs.AUCTION_CURRENT_PRICE.title)
         if MOLHLanguage.isArabic(){
             self.sendBtn.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
         }
@@ -77,9 +81,9 @@ extension ProductDatailsVC{
         sellerNameLbl.customLabel(color: .C44215D, size: .size_14, font: .W400, text: "إسم البائع")
         print(ads_banners, "THIS IS ADS BANNER")
         timeView.circleCornerRadius()
-        priceTxtField.customTxtField(color: .C44215D, size: .size_13, font: .W400, placeholder: "اكتب المبلغ", text: "")
+        priceTxtField.customTxtField(color: .C1D1D1D, size: .size_13, font: .W400, placeholder:TxtFields.WRITE_PRICE.title, text: "")
         priceView.addRadius(radius: 6)
-        sendView.addShadow()
+
         datesView.addRadius(radius: 13)
         datesView.addShadow()
         pageControlView.circleCornerRadius()
@@ -183,12 +187,10 @@ extension ProductDatailsVC: UITableViewDataSource, UITableViewDelegate{
             cell.initCell()
             return cell
         }
-        
     }
 }
 
 extension ProductDatailsVC: UICollectionViewDataSource, UICollectionViewDelegate {
-    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return ads_banners.count

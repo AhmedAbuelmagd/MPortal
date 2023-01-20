@@ -29,6 +29,9 @@
 "otherLbl"="آخر";
 "selectYourLangLbl"="من فضلك قم بإختيار اللغة.";
 "langNoteLbl"="لاحظ ان اللغة الأساسية هي الانجليزية.";
+"auctionCurrentPriceLbl"="القيمة الحالية للمزاد";
 // MARK: - BTNs Enum
 "nextStepBtn"="الخطوة التالية";
 "continueBtn"="إستمرار";
+//MARK: - TxtFields Enum
+"writePriceTF"="اكتب المبلغ";

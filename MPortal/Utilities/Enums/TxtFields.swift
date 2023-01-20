@@ -13,6 +13,9 @@ enum TxtFields: String, CaseIterable {
     
     case NONE = ""
     case SEARCH_HERE = "searchHereTF"
-    
+    case WRITE_PRICE = "writePriceTF"
+    var title: String {
+         self.rawValue.localized
+    }
 }
 

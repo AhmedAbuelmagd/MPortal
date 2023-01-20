@@ -29,6 +29,12 @@
 "otherLbl"="Other";
 "selectYourLangLbl"="Please select your language.";
 "langNoteLbl"="Note that the default language english.";
+"auctionCurrentPriceLbl"="Auction current price";
 // MARK: - BTNs Enum
 "nextStepBtn"="Next Step";
 "continueBtn"="Continue";
+
+//MARK: - TxtFields Enum
+"writePriceTF"="write price";
+
+
