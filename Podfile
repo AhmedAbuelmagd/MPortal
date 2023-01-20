@@ -12,7 +12,9 @@ target 'MPortal' do
     pod 'JGProgressHUD'
     pod 'Kingfisher', '~> 7.0'
     pod 'Cosmos'
-
+    pod 'TagListView', '~> 1.0'
+    pod 'IBAnimatable'
+    
   target 'MPortalTests' do
     inherit! :search_paths
     # Pods for testing

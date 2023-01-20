@@ -113,8 +113,6 @@
 		31F9EB57297582D400F35F5E /* ImageSliderCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31F9EB55297582D400F35F5E /* ImageSliderCVCell.xib */; };
 		31F9EB5A297582E800F35F5E /* VideoSliderCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F9EB58297582E800F35F5E /* VideoSliderCVCell.swift */; };
 		31F9EB5B297582E800F35F5E /* VideoSliderCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31F9EB59297582E800F35F5E /* VideoSliderCVCell.xib */; };
-		31F9EB5E2975954500F35F5E /* pricesCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F9EB5C2975954500F35F5E /* pricesCVCell.swift */; };
-		31F9EB5F2975954500F35F5E /* pricesCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31F9EB5D2975954500F35F5E /* pricesCVCell.xib */; };
 		5558B1CAB11900708CB67DBE /* Pods_MPortalTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA70298ECE58583B540565C0 /* Pods_MPortalTests.framework */; };
 		B6C837E5B3CDE7C9699F4F56 /* Pods_MPortal_MPortalUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E284ABD804B4EC74079EE4E /* Pods_MPortal_MPortalUITests.framework */; };
 /* End PBXBuildFile section */
@@ -243,8 +241,6 @@
 		31F9EB55297582D400F35F5E /* ImageSliderCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageSliderCVCell.xib; sourceTree = "<group>"; };
 		31F9EB58297582E800F35F5E /* VideoSliderCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoSliderCVCell.swift; sourceTree = "<group>"; };
 		31F9EB59297582E800F35F5E /* VideoSliderCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoSliderCVCell.xib; sourceTree = "<group>"; };
-		31F9EB5C2975954500F35F5E /* pricesCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pricesCVCell.swift; sourceTree = "<group>"; };
-		31F9EB5D2975954500F35F5E /* pricesCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = pricesCVCell.xib; sourceTree = "<group>"; };
 		3E284ABD804B4EC74079EE4E /* Pods_MPortal_MPortalUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MPortal_MPortalUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		85347F6010DC0CFF9F3678C9 /* Pods_MPortal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MPortal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		88B65F239ECF2936285834B6 /* Pods-MPortal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MPortal.debug.xcconfig"; path = "Target Support Files/Pods-MPortal/Pods-MPortal.debug.xcconfig"; sourceTree = "<group>"; };
@@ -601,8 +597,6 @@
 				31F9EB55297582D400F35F5E /* ImageSliderCVCell.xib */,
 				31F9EB58297582E800F35F5E /* VideoSliderCVCell.swift */,
 				31F9EB59297582E800F35F5E /* VideoSliderCVCell.xib */,
-				31F9EB5C2975954500F35F5E /* pricesCVCell.swift */,
-				31F9EB5D2975954500F35F5E /* pricesCVCell.xib */,
 				31AEADBA29796378004F3602 /* BiddersTVCell.swift */,
 				31AEADBB29796378004F3602 /* BiddersTVCell.xib */,
 				31AEADBE297963CA004F3602 /* BiddersTVHeaderCell.swift */,
@@ -762,7 +756,6 @@
 				31F9EB0D297427D800F35F5E /* FilterTVCell.xib in Resources */,
 				31F9EB3529742B0800F35F5E /* Poppins-Black.ttf in Resources */,
 				31F9EB2F29742B0800F35F5E /* Poppins-Medium.ttf in Resources */,
-				31F9EB5F2975954500F35F5E /* pricesCVCell.xib in Resources */,
 				31F9EB3829742B0800F35F5E /* Poppins-Bold.ttf in Resources */,
 				31C7FA322976C1AB004AB7D0 /* Localizable.strings in Resources */,
 				31AEADBD29796378004F3602 /* BiddersTVCell.xib in Resources */,
@@ -932,7 +925,6 @@
 				3149745A2973312100CFE6E9 /* CategoriesData.swift in Sources */,
 				31C7FA3C2976E08D004AB7D0 /* BTNs.swift in Sources */,
 				3149744A29732A4100CFE6E9 /* String+Extensions.swift in Sources */,
-				31F9EB5E2975954500F35F5E /* pricesCVCell.swift in Sources */,
 				31C7FA3A2976E05B004AB7D0 /* UIButton+Extensions.swift in Sources */,
 				31F9EB3A29742D6F00F35F5E /* UILabel+Extension.swift in Sources */,
 				31F9EB3F2974557000F35F5E /* GetCategoryPModel.swift in Sources */,

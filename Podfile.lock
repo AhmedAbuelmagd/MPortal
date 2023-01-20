@@ -1,5 +1,6 @@
 PODS:
   - Cosmos (23.0.0)
+  - IBAnimatable (6.1.0)
   - IQKeyboardManagerSwift (6.5.10)
   - JGProgressHUD (2.2)
   - Kingfisher (7.4.0)
@@ -651,18 +652,22 @@ PODS:
   - SwiftMessages (9.0.6):
     - SwiftMessages/App (= 9.0.6)
   - SwiftMessages/App (9.0.6)
+  - TagListView (1.4.1)
 
 DEPENDENCIES:
   - Cosmos
+  - IBAnimatable
   - IQKeyboardManagerSwift
   - JGProgressHUD
   - Kingfisher (~> 7.0)
   - MaterialComponents
   - SwiftMessages
+  - TagListView (~> 1.0)
 
 SPEC REPOS:
   trunk:
     - Cosmos
+    - IBAnimatable
     - IQKeyboardManagerSwift
     - JGProgressHUD
     - Kingfisher
@@ -672,9 +677,11 @@ SPEC REPOS:
     - MotionAnimator
     - MotionInterchange
     - SwiftMessages
+    - TagListView
 
 SPEC CHECKSUMS:
   Cosmos: b5c6a9a637e28a061b54c8f8b1d8529d7d4db73f
+  IBAnimatable: 99dddd4c0625884a301ba3ecbc1615f8a390368e
   IQKeyboardManagerSwift: 52962c76ab33532f15ad9f3ff4e5715eda5335bb
   JGProgressHUD: d83d7a981b85d11205e19ff8ad5bb9c40571c847
   Kingfisher: 596b207973051aae5e4c54a1c1cb39837ea10d36
@@ -684,7 +691,8 @@ SPEC CHECKSUMS:
   MotionAnimator: 5f99d7c9592928c0f28a66283eda9c3b657dc480
   MotionInterchange: 13adae439b377e31d1674cc165539d50e1d1566a
   SwiftMessages: f0c7ef4705a570ad6c5e208b611f4333e660ed92
+  TagListView: a1c236d17960a0cf64156725a76ce6d73ebce2be
 
-PODFILE CHECKSUM: e251638e09057ffd06a29399a2a636af9a119137
+PODFILE CHECKSUM: 65bf610d9f06c494ed93b00fcb1bffab1488db35
 
 COCOAPODS: 1.11.3

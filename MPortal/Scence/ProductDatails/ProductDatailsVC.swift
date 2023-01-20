@@ -8,6 +8,7 @@
 
 import UIKit
 import MOLH
+import TagListView
 
 class ProductDatailsVC: UIViewController {
 
@@ -18,7 +19,6 @@ class ProductDatailsVC: UIViewController {
     @IBOutlet weak var sendView: UIView!
     @IBOutlet weak var priceView: UIView!
     @IBOutlet weak var priceTxtField: UITextField!
-    @IBOutlet weak var pricesCV: UICollectionView!
     @IBOutlet weak var timeView: UIView!
     @IBOutlet weak var sellerTitleLbl: UILabel!
     @IBOutlet weak var sellerNameLbl: UILabel!
@@ -28,6 +28,7 @@ class ProductDatailsVC: UIViewController {
     @IBOutlet weak var bidderTVHeight: NSLayoutConstraint!
     @IBOutlet weak var productsTV: UITableView!
     @IBOutlet weak var sendBtn: UIButton!
+    @IBOutlet weak var pricesListView: TagListView!
     
     
     
@@ -61,7 +62,9 @@ class ProductDatailsVC: UIViewController {
 
 extension ProductDatailsVC{
     func initUI(){
-        
+        pricesListView.addTag("+1000")
+        pricesListView.addTag("+1000")
+//        pricesListView.delegate = self
         
         if MOLHLanguage.isArabic(){
             self.sendBtn.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
@@ -82,7 +85,7 @@ extension ProductDatailsVC{
         pageControlView.circleCornerRadius()
         print(ads_banners.count, "ads_banners count")
         startTimer()
-        initCV(cvs: [sliderCV,pricesCV])
+        initCV(cv: sliderCV)
         pageControl.numberOfPages = ads_banners.count
     }
     func initTV(tvs: [UITableView]){
@@ -109,14 +112,13 @@ extension ProductDatailsVC{
         }
         }
     
-    func initCV(cvs: [UICollectionView]) {
-        for cv in cvs {
-            cv.dataSource = self
-            cv.delegate = self
-        }
-        cvs[0].registerCVNib(cell: ImageSliderCVCell.self)
-        cvs[0].registerCVNib(cell: VideoSliderCVCell.self)
-        cvs[1].registerCVNib(cell: pricesCVCell.self)
+    func initCV(cv: UICollectionView) {
+        
+        cv.dataSource = self
+        cv.delegate = self
+        
+        cv.registerCVNib(cell: ImageSliderCVCell.self)
+        cv.registerCVNib(cell: VideoSliderCVCell.self)
         
     }
     func startTimer(){
@@ -128,9 +130,7 @@ extension ProductDatailsVC{
     }
 }
 extension ProductDatailsVC: UITableViewDataSource, UITableViewDelegate{
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        coordinator?.openEPlusPackageDetails()
-    }
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -191,80 +191,29 @@ extension ProductDatailsVC: UICollectionViewDataSource, UICollectionViewDelegate
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        switch collectionView.tag{
-        case 0: return ads_banners.count
-        case 2: return 6
-        default: return 6
-        }
+        return ads_banners.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        switch collectionView.tag{
-        case 0:
-            if ads_banners[indexPath.row].media_type == "video"{
-                let cell = collectionView.dequeueCV(index: indexPath) as VideoSliderCVCell
-                return cell
-            }else{
-                let cell = collectionView.dequeueCV(index: indexPath) as ImageSliderCVCell
-                cell.initCell(cellData: ads_banners[indexPath.row])
-                return cell
-            }
-        case 2:
-            let cell = collectionView.dequeueCV(index: indexPath) as pricesCVCell
-//            cell.initCell(data: "rediologySample")
+        if ads_banners[indexPath.row].media_type == "video"{
+            let cell = collectionView.dequeueCV(index: indexPath) as VideoSliderCVCell
             return cell
-        default:
+        }else{
             let cell = collectionView.dequeueCV(index: indexPath) as ImageSliderCVCell
+            cell.initCell(cellData: ads_banners[indexPath.row])
             return cell
-        }
-
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        switch collectionView.tag{
-        case 0: print("Open Slider cell image or go to details screen")
-        case 2: print("coordinator?.openLabDetails()")
-            //coordinator?.openLabDetails()
-        default:print("go to insurance details")
         }
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
             return 0
         }
         func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-            switch collectionView.tag{
-            case 0: return 0
-            case 2: return 10
-            default: return 10
-            }
+            return 0
         }
 }
 extension ProductDatailsVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        switch collectionView.tag{
-        case 0:
-            return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
-        case 2:
-            let colomnNumber: CGFloat = 2.5
-            //collection view width
-            let collectionViewWidth = collectionView.bounds.width
-            let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
-            let spaceBetweenCells = flowLayout.minimumLineSpacing
-            
-            let cellWidth = (collectionViewWidth - (spaceBetweenCells*2)) / colomnNumber
-            return CGSize(width: collectionView.bounds.height, height: collectionView.bounds.height)
-//        case 2: return 6
-        default:
-            // number of column
-            let colomnNumber: CGFloat = 2.0
-            //collection view width
-            let collectionViewWidth = collectionView.bounds.width
-            let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
-            let spaceBetweenCells = flowLayout.minimumLineSpacing
-            
-            let cellWidth = (collectionViewWidth - (spaceBetweenCells)) / colomnNumber
-            return CGSize(width: cellWidth, height: cellWidth * 0.825)
-        }
+        return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
     }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         currentIndex = Int(scrollView.contentOffset.x / sliderCV.frame.size.width)

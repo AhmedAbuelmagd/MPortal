@@ -18,7 +18,7 @@
                 <outlet property="pageControlView" destination="JD0-73-VIN" id="gbe-Mq-yAZ"/>
                 <outlet property="priceTxtField" destination="bZ1-Hr-34i" id="TkY-Jk-w1a"/>
                 <outlet property="priceView" destination="6nh-xd-Smg" id="jed-PL-r8A"/>
-                <outlet property="pricesCV" destination="ixO-cf-zNN" id="p6p-z3-qTW"/>
+                <outlet property="pricesListView" destination="XYS-eG-HeY" id="rLj-6v-K7s"/>
                 <outlet property="productsNumLbl" destination="uoV-3K-FSa" id="zMC-Cu-ijf"/>
                 <outlet property="productsTV" destination="a0Q-y4-a2M" id="ze6-qz-kTO"/>
                 <outlet property="sellerNameLbl" destination="1fB-Ll-Vpb" id="ODs-2i-2a0"/>
@@ -266,7 +266,7 @@
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Line 45" translatesAutoresizingMaskIntoConstraints="NO" id="bVN-9y-H7f">
-                                                                            <rect key="frame" x="120.66666666666666" y="0.0" width="184.99999999999997" height="17"/>
+                                                                            <rect key="frame" x="120.99999999999999" y="0.0" width="184.66666666666663" height="17"/>
                                                                         </imageView>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="200$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ozt-Bf-yHj">
                                                                             <rect key="frame" x="315.66666666666669" y="0.0" width="34.333333333333314" height="17"/>
@@ -286,7 +286,7 @@
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Line 45" translatesAutoresizingMaskIntoConstraints="NO" id="AkN-PO-7Oa">
-                                                                            <rect key="frame" x="120.66666666666666" y="0.0" width="184.99999999999997" height="17"/>
+                                                                            <rect key="frame" x="120.99999999999999" y="0.0" width="184.66666666666663" height="17"/>
                                                                         </imageView>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="200$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dlq-gh-XHI">
                                                                             <rect key="frame" x="315.66666666666669" y="0.0" width="34.333333333333314" height="17"/>
@@ -473,7 +473,7 @@
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hIZ-qY-khu" customClass="CosmosView" customModule="Cosmos">
-                                                                            <rect key="frame" x="0.0" y="44" width="93" height="15"/>
+                                                                            <rect key="frame" x="0.0" y="44" width="90" height="15"/>
                                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="15" id="vNo-o7-dh8"/>
@@ -543,27 +543,35 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="bottom" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="QDD-XW-zFs">
                                                             <rect key="frame" x="0.0" y="0.0" width="346" height="39.333333333333336"/>
                                                             <subviews>
-                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XYS-eG-HeY">
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XYS-eG-HeY" customClass="TagListView" customModule="TagListView">
                                                                     <rect key="frame" x="0.0" y="0.0" width="212" height="39.333333333333336"/>
-                                                                    <subviews>
-                                                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="ixO-cf-zNN">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="212" height="39.333333333333343"/>
-                                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="kur-9s-mjl">
-                                                                                <size key="itemSize" width="128" height="128"/>
-                                                                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                                                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                                                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                                            </collectionViewFlowLayout>
-                                                                        </collectionView>
-                                                                    </subviews>
                                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="trailing" secondItem="ixO-cf-zNN" secondAttribute="trailing" id="f62-zj-mHe"/>
-                                                                        <constraint firstItem="ixO-cf-zNN" firstAttribute="leading" secondItem="XYS-eG-HeY" secondAttribute="leading" id="hdI-Pp-FtM"/>
-                                                                        <constraint firstItem="ixO-cf-zNN" firstAttribute="top" secondItem="XYS-eG-HeY" secondAttribute="top" id="nd5-Ta-oyU"/>
-                                                                        <constraint firstAttribute="bottom" secondItem="ixO-cf-zNN" secondAttribute="bottom" id="uWr-HI-I92"/>
-                                                                    </constraints>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="color" keyPath="tagSelectedBackgroundColor">
+                                                                            <color key="value" red="0.81176470590000005" green="0.019607843140000001" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                            <real key="value" value="6"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="paddingY">
+                                                                            <real key="value" value="13"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="paddingX">
+                                                                            <real key="value" value="13"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="marginY">
+                                                                            <real key="value" value="13"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="marginX">
+                                                                            <real key="value" value="13"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                                                            <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="color" keyPath="tagBackgroundColor">
+                                                                            <color key="value" red="0.95686274509803915" green="0.35686274509803922" blue="0.078431372549019607" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
                                                                 </view>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="cu5-oH-C7i">
                                                                     <rect key="frame" x="252" y="0.0" width="94" height="39.333333333333336"/>
@@ -764,11 +772,14 @@
         <designable name="K2m-Dc-Nxz">
             <size key="intrinsicContentSize" width="120" height="20"/>
         </designable>
+        <designable name="hIZ-qY-khu">
+            <size key="intrinsicContentSize" width="90" height="14"/>
+        </designable>
     </designables>
     <resources>
         <image name="8703904_boy_dynamic_color_icon" width="26" height="26"/>
         <image name="Group 1371" width="19" height="20"/>
-        <image name="Line 45" width="185" height="1"/>
+        <image name="Line 45" width="184.66667175292969" height="1"/>
         <image name="NoPath - Copy (2)" width="44" height="44"/>
         <image name="Rectangle 310" width="429" height="116"/>
         <image name="date_range_black_24dp" width="24" height="24"/>
