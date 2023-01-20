@@ -12,6 +12,8 @@ import Foundation
 enum BTNs: String {
     case NEXT_STEP = "nextStepBtn"
     case CONTINUE = "continueBtn"
+    case BUY_NOW = "butNowBtn"
+    case WITHDRAWAL = "withdrawalBtn"
     
 }
 

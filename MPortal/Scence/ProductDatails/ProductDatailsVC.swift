@@ -40,6 +40,9 @@ class ProductDatailsVC: UIViewController {
     @IBOutlet weak var dayLbl: UILabel!
     @IBOutlet weak var hourLbl: UILabel!
     @IBOutlet weak var minuteLbl: UILabel!
+    @IBOutlet weak var buynowBtn: UIButton!
+    @IBOutlet weak var withdrawaBtn: UIButton!
+    
     
     
     
@@ -74,6 +77,11 @@ class ProductDatailsVC: UIViewController {
 
 extension ProductDatailsVC{
     func initUI(){
+        for btn in [buynowBtn,withdrawaBtn]{
+            btn?.addRadius(radius: 4)
+        }
+        buynowBtn.custom(titleColor: .CFFFFFF, size: .size_12, title: .BUY_NOW)
+        withdrawaBtn.custom(titleColor: .CFFFFFF, size: .size_13, title: .WITHDRAWAL)
         dayLbl.customLabel(color: .CFDBC01, size: .size_08, font: .W600, text: "يوم")
         hourLbl.customLabel(color: .CFDBC01, size: .size_08, font: .W600, text: "ساعه")
         minuteLbl.customLabel(color: .CFDBC01, size: .size_08, font: .W600, text: "دقيقة")

@@ -36,6 +36,8 @@
 // MARK: - BTNs Enum
 "nextStepBtn"="Next Step";
 "continueBtn"="Continue";
+"butNowBtn"="Buy now";
+"withdrawalBtn"="Withdraw";
 
 //MARK: - TxtFields Enum
 "writePriceTF"="write price";
