@@ -44,7 +44,7 @@ extension ProductsTVCell: UICollectionViewDataSource, UICollectionViewDelegate {
 extension ProductsTVCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let collectionViewWidth = collectionView.bounds.width
-        return CGSize(width: collectionViewWidth/2.5, height: 190)
+        return CGSize(width: collectionViewWidth/2.5, height: collectionView.bounds.height)
 
     }
 }

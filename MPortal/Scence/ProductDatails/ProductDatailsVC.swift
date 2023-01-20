@@ -62,7 +62,7 @@ class ProductDatailsVC: UIViewController {
     var currentIndex = 0
     var ads_banners = [Ads_banners]()
     var tVCellHeight: CGFloat = 56*iPhoneXFactor
-    var tvCellHeaderHight: CGFloat = 44*iPhoneXFactor
+    var tvCellHeaderHight: CGFloat = 37
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -209,6 +209,9 @@ extension ProductDatailsVC: UITableViewDataSource, UITableViewDelegate{
         }
         
     }
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch tableView.tag{
@@ -221,7 +224,7 @@ extension ProductDatailsVC: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch tableView.tag{
         case 0: return tVCellHeight
-        case 1: return 500
+        case 1: return 222
         default: return 500
         }
         
