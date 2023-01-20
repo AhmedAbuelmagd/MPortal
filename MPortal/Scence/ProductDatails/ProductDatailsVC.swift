@@ -74,12 +74,11 @@ extension ProductDatailsVC{
             self.sendBtn.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
         }
         initTV(tvs: [biddersTV,productsTV])
-        productsNumLbl.customLabel(color: .C808080, size: .size_11, font: .W300, text: "٤ منتجات")
-        sellerTitleLbl.customLabel(color: .C1D1D1D, size: .size_14, font: .W300, text: "البائع")
+        productsNumLbl.customLabel(color: .C808080, size: .size_11, font: .W300, text: LBLs.PRODUCTS_NUM.title)
+        sellerTitleLbl.customLabel(color: .C1D1D1D, size: .size_14, font: .W300, text: LBLs.SELLER.title)
         sellerNumberLbl.customLabel(color: .C44215D, size: .size_12, font: .W300, text: "+966598398")
+        sellerNameLbl.customLabel(color: .C44215D, size: .size_14, font: .W400, text: LBLs.SELLER_NAME.title)
         
-        sellerNameLbl.customLabel(color: .C44215D, size: .size_14, font: .W400, text: "إسم البائع")
-        print(ads_banners, "THIS IS ADS BANNER")
         timeView.circleCornerRadius()
         priceTxtField.customTxtField(color: .C1D1D1D, size: .size_13, font: .W400, placeholder:TxtFields.WRITE_PRICE.title, text: "")
         priceView.addRadius(radius: 6)

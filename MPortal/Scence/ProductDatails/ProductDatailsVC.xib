@@ -546,10 +546,10 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="346" height="43"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U4S-Ry-CUU">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="222.33333333333334" height="43"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="214.66666666666666" height="43"/>
                                                                     <subviews>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XYS-eG-HeY" customClass="TagListView" customModule="TagListView">
-                                                                            <rect key="frame" x="6" y="0.0" width="216.33333333333334" height="43"/>
+                                                                            <rect key="frame" x="6" y="0.0" width="208.66666666666666" height="43"/>
                                                                             <userDefinedRuntimeAttributes>
                                                                                 <userDefinedRuntimeAttribute type="color" keyPath="tagSelectedBackgroundColor">
                                                                                     <color key="value" red="0.81176470590000005" green="0.019607843140000001" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
@@ -790,7 +790,7 @@
                 <constraint firstItem="wlc-qb-DC4" firstAttribute="height" secondItem="fnl-2z-Ty3" secondAttribute="width" multiplier="0.394444" id="Fot-eu-6wj"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="msj-q7-nCU" secondAttribute="trailing" id="Jgk-Fa-jIN"/>
                 <constraint firstItem="msj-q7-nCU" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="PKL-Mt-nUL"/>
-                <constraint firstItem="U4S-Ry-CUU" firstAttribute="width" secondItem="fnl-2z-Ty3" secondAttribute="width" multiplier="0.57" id="VWM-6m-sSg"/>
+                <constraint firstItem="U4S-Ry-CUU" firstAttribute="width" secondItem="fnl-2z-Ty3" secondAttribute="width" multiplier="0.55" id="VWM-6m-sSg"/>
                 <constraint firstItem="msj-q7-nCU" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="b1y-0P-SLa"/>
                 <constraint firstItem="6nh-xd-Smg" firstAttribute="height" secondItem="fnl-2z-Ty3" secondAttribute="width" multiplier="0.111111" id="g0G-KQ-dd2"/>
                 <constraint firstItem="7T5-je-Cja" firstAttribute="height" secondItem="fnl-2z-Ty3" secondAttribute="width" multiplier="0.67757" id="k0T-cq-jsh"/>
@@ -805,7 +805,7 @@
             <size key="intrinsicContentSize" width="120" height="20"/>
         </designable>
         <designable name="XYS-eG-HeY">
-            <size key="intrinsicContentSize" width="216.33333333333334" height="76"/>
+            <size key="intrinsicContentSize" width="208.66666666666666" height="76"/>
         </designable>
         <designable name="hIZ-qY-khu">
             <size key="intrinsicContentSize" width="90" height="14"/>

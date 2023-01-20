@@ -29,7 +29,10 @@
 "otherLbl"="Other";
 "selectYourLangLbl"="Please select your language.";
 "langNoteLbl"="Note that the default language english.";
-"auctionCurrentPriceLbl"="Auction current price";
+"auctionCurrentPriceLbl"="Current price";
+"sellerLbl"="Seller";
+"productsNumbersLbl"="4 products";
+"sellerNameLbl"="Seller's name";
 // MARK: - BTNs Enum
 "nextStepBtn"="Next Step";
 "continueBtn"="Continue";

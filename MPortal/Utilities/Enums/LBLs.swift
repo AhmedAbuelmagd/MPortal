@@ -17,6 +17,9 @@ enum LBLs: String {
     case SELECT_YOUR_LANG = "selectYourLangLbl"
     case LANG_NOTE = "langNoteLbl"
     case AUCTION_CURRENT_PRICE = "auctionCurrentPriceLbl"
+    case SELLER = "sellerLbl"
+    case SELLER_NAME = "sellerNameLbl"
+    case PRODUCTS_NUM = "productsNumbersLbl"
     var title: String {
          self.rawValue.localized
     }

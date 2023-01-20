@@ -30,6 +30,9 @@
 "selectYourLangLbl"="من فضلك قم بإختيار اللغة.";
 "langNoteLbl"="لاحظ ان اللغة الأساسية هي الانجليزية.";
 "auctionCurrentPriceLbl"="القيمة الحالية للمزاد";
+"sellerLbl"="البائع";
+"productsNumbersLbl"="4 منتجات";
+"sellerNameLbl"="إسم البائع";
 // MARK: - BTNs Enum
 "nextStepBtn"="الخطوة التالية";
 "continueBtn"="إستمرار";
