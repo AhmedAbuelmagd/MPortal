@@ -39,9 +39,6 @@
 		314974622973325900CFE6E9 /* Ads_banners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314974612973325900CFE6E9 /* Ads_banners.swift */; };
 		314974642973336F00CFE6E9 /* HomeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314974632973336F00CFE6E9 /* HomeVM.swift */; };
 		3149747B297338BD00CFE6E9 /* BaseVMProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3149747A297338BD00CFE6E9 /* BaseVMProtocol.swift */; };
-		3149747E29733C6D00CFE6E9 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 3149747D29733C6D00CFE6E9 /* RxCocoa */; };
-		3149748029733C6D00CFE6E9 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 3149747F29733C6D00CFE6E9 /* RxRelay */; };
-		3149748229733C6D00CFE6E9 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3149748129733C6D00CFE6E9 /* RxSwift */; };
 		3149748529733E7F00CFE6E9 /* Internet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3149748429733E7F00CFE6E9 /* Internet.swift */; };
 		3149748829735B1800CFE6E9 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3149748729735B1800CFE6E9 /* Filter.swift */; };
 		3149748A29735EE100CFE6E9 /* FiltersList.json in Resources */ = {isa = PBXBuildFile; fileRef = 3149748929735EE100CFE6E9 /* FiltersList.json */; };
@@ -256,10 +253,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3149747E29733C6D00CFE6E9 /* RxCocoa in Frameworks */,
 				3149745629732F0F00CFE6E9 /* MOLH in Frameworks */,
-				3149748229733C6D00CFE6E9 /* RxSwift in Frameworks */,
-				3149748029733C6D00CFE6E9 /* RxRelay in Frameworks */,
 				314974442973296E00CFE6E9 /* Moya in Frameworks */,
 				026F00D12A9AB9123C9EC86E /* Pods_MPortal.framework in Frameworks */,
 			);
@@ -691,7 +685,7 @@
 				314973E929730F4400CFE6E9 /* Sources */,
 				314973EA29730F4400CFE6E9 /* Frameworks */,
 				314973EB29730F4400CFE6E9 /* Resources */,
-				9FA7424A983F1EF524F35A21 /* [CP] Embed Pods Frameworks */,
+				C2B2EF570C8C844A898FC0E1 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -701,9 +695,6 @@
 			packageProductDependencies = (
 				314974432973296E00CFE6E9 /* Moya */,
 				3149745529732F0F00CFE6E9 /* MOLH */,
-				3149747D29733C6D00CFE6E9 /* RxCocoa */,
-				3149747F29733C6D00CFE6E9 /* RxRelay */,
-				3149748129733C6D00CFE6E9 /* RxSwift */,
 			);
 			productName = MPortal;
 			productReference = 314973ED29730F4400CFE6E9 /* MPortal.app */;
@@ -736,7 +727,7 @@
 				3149740929730F4600CFE6E9 /* Sources */,
 				3149740A29730F4600CFE6E9 /* Frameworks */,
 				3149740B29730F4600CFE6E9 /* Resources */,
-				7AB46E90D11647908040BEA9 /* [CP] Embed Pods Frameworks */,
+				B1417C7542567B277E878A24 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -785,7 +776,6 @@
 			packageReferences = (
 				314974422973296D00CFE6E9 /* XCRemoteSwiftPackageReference "Moya" */,
 				3149745429732F0F00CFE6E9 /* XCRemoteSwiftPackageReference "MOLH" */,
-				3149747C29733C6D00CFE6E9 /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = 314973EE29730F4400CFE6E9 /* Products */;
 			projectDirPath = "";
@@ -879,7 +869,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7AB46E90D11647908040BEA9 /* [CP] Embed Pods Frameworks */ = {
+		B1417C7542567B277E878A24 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -896,7 +886,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MPortal-MPortalUITests/Pods-MPortal-MPortalUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9FA7424A983F1EF524F35A21 /* [CP] Embed Pods Frameworks */ = {
+		C2B2EF570C8C844A898FC0E1 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1428,14 +1418,6 @@
 				minimumVersion = 1.0.0;
 			};
 		};
-		3149747C29733C6D00CFE6E9 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ReactiveX/RxSwift";
-			requirement = {
-				kind = exactVersion;
-				version = 6.5.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1448,21 +1430,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3149745429732F0F00CFE6E9 /* XCRemoteSwiftPackageReference "MOLH" */;
 			productName = MOLH;
-		};
-		3149747D29733C6D00CFE6E9 /* RxCocoa */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3149747C29733C6D00CFE6E9 /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxCocoa;
-		};
-		3149747F29733C6D00CFE6E9 /* RxRelay */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3149747C29733C6D00CFE6E9 /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxRelay;
-		};
-		3149748129733C6D00CFE6E9 /* RxSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3149747C29733C6D00CFE6E9 /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

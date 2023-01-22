@@ -6,7 +6,7 @@ target 'MPortal' do
   use_frameworks!
 
   # Pods for MPortal
-    pod 'MaterialComponents'
+#    pod 'MaterialComponents'
     pod 'SwiftMessages'
     pod 'IQKeyboardManagerSwift'
     pod 'JGProgressHUD'

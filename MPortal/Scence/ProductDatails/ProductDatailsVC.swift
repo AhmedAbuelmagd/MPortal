@@ -12,19 +12,6 @@ import TagListView
 
 class ProductDatailsVC: UIViewController {
 
-    // MARK: - Outlets
-    
-    // MARK: - Variables & Constants
-    
-    // MARK: - View Model
-    
-    // MARK: - View Did Load
-    
-    // MARK: - Actions
-    
-    // MARK: - Binding Data
-    
-    // MARK: - initCell
     @IBOutlet weak var sliderCV: UICollectionView!
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var pageControlView: UIView!
