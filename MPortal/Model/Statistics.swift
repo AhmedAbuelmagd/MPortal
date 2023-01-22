@@ -8,6 +8,7 @@
 
 import Foundation
 
+// MARK: - Statistics
 struct Statistics: Codable {
     var auctions: Int?
     var users: Int?

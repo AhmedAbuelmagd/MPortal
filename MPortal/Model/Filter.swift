@@ -8,6 +8,7 @@
 
 import Foundation
 
+// MARK: - Filter
 struct Filter: Codable {
     var id: Int?
     var name: String?

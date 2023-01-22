@@ -8,6 +8,7 @@
 
 import Foundation
 
+// MARK: - BaseResponse
 struct BaseResponse<E : Codable> : Codable {
     var code: Int?
     var msg: String?

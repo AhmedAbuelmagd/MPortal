@@ -12,6 +12,19 @@ import TagListView
 
 class ProductDatailsVC: UIViewController {
 
+    // MARK: - Outlets
+    
+    // MARK: - Variables & Constants
+    
+    // MARK: - View Model
+    
+    // MARK: - View Did Load
+    
+    // MARK: - Actions
+    
+    // MARK: - Binding Data
+    
+    // MARK: - initCell
     @IBOutlet weak var sliderCV: UICollectionView!
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var pageControlView: UIView!
@@ -35,7 +48,6 @@ class ProductDatailsVC: UIViewController {
     @IBOutlet weak var dateLbl: UILabel!
     @IBOutlet weak var dateValueLbl: UILabel!
     @IBOutlet weak var dateHourLbl: UILabel!
-    
     @IBOutlet weak var counterLbl: UILabel!
     @IBOutlet weak var dayLbl: UILabel!
     @IBOutlet weak var hourLbl: UILabel!
@@ -44,18 +56,13 @@ class ProductDatailsVC: UIViewController {
     @IBOutlet weak var withdrawaBtn: UIButton!
     @IBOutlet weak var priceNowTitleLbl: UILabel!
     @IBOutlet weak var priceNowValueLbl: UILabel!
-    
     @IBOutlet weak var auctionPriceNowLbl: UILabel!
     @IBOutlet weak var auctionPriceAfterTaxLbl: UILabel!
-    
     @IBOutlet weak var auctionNameLbl: UILabel!
     @IBOutlet weak var auctionCodeLbl: UILabel!
     @IBOutlet weak var auctionDetailsLbl: UILabel!
-    
     @IBOutlet var arrowsImg: [UIImageView]!
     @IBOutlet weak var auctionRateLbl: UILabel!
-    
-    
     
     var timer : Timer?
     var coordinator: HomeCoordinator?
@@ -81,7 +88,6 @@ class ProductDatailsVC: UIViewController {
     @IBAction func backBtnClicked(_ sender: UIButton) {
         dismiss()
     }
-    
 }
 
 extension ProductDatailsVC{
@@ -135,7 +141,6 @@ extension ProductDatailsVC{
         priceView.addRadius(radius: 6)
 
         datesView.addRadius(radius: 6)
-//        datesView.addShadow()
         pageControlView.circleCornerRadius()
         print(ads_banners.count, "ads_banners count")
         startTimer()
@@ -179,8 +184,11 @@ extension ProductDatailsVC{
         timer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
     }
     @objc func timerAction(){
-        let desiredScrollPosition = (currentIndex < ads_banners.count - 1) ? currentIndex + 1 : 0
-        sliderCV.scrollToItem(at: IndexPath(item: desiredScrollPosition, section: 0), at: .centeredHorizontally, animated: true)
+        if !ads_banners.isEmpty{
+            let desiredScrollPosition = (currentIndex < ads_banners.count - 1) ? currentIndex + 1 : 0
+            sliderCV.scrollToItem(at: IndexPath(item: desiredScrollPosition, section: 0), at: .centeredHorizontally, animated: true)
+        }
+        
     }
 }
 extension ProductDatailsVC: UITableViewDataSource, UITableViewDelegate{

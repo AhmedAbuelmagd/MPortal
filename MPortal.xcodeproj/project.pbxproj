@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -542,6 +542,69 @@
 			path = Localization;
 			sourceTree = "<group>";
 		};
+		31DDC569297D247F0022AB59 /* ImageSliderCVCell */ = {
+			isa = PBXGroup;
+			children = (
+				31F9EB55297582D400F35F5E /* ImageSliderCVCell.xib */,
+				31F9EB54297582D400F35F5E /* ImageSliderCVCell.swift */,
+			);
+			path = ImageSliderCVCell;
+			sourceTree = "<group>";
+		};
+		31DDC56A297D249A0022AB59 /* VideoSliderCVCell */ = {
+			isa = PBXGroup;
+			children = (
+				31F9EB58297582E800F35F5E /* VideoSliderCVCell.swift */,
+				31F9EB59297582E800F35F5E /* VideoSliderCVCell.xib */,
+			);
+			path = VideoSliderCVCell;
+			sourceTree = "<group>";
+		};
+		31DDC56B297D24A80022AB59 /* BiddersTVCell */ = {
+			isa = PBXGroup;
+			children = (
+				31AEADBB29796378004F3602 /* BiddersTVCell.xib */,
+				31AEADBA29796378004F3602 /* BiddersTVCell.swift */,
+			);
+			path = BiddersTVCell;
+			sourceTree = "<group>";
+		};
+		31DDC56C297D24B50022AB59 /* BiddersTVHeaderCell */ = {
+			isa = PBXGroup;
+			children = (
+				31AEADBF297963CA004F3602 /* BiddersTVHeaderCell.xib */,
+				31AEADBE297963CA004F3602 /* BiddersTVHeaderCell.swift */,
+			);
+			path = BiddersTVHeaderCell;
+			sourceTree = "<group>";
+		};
+		31DDC56D297D24C20022AB59 /* ProductsTVCell */ = {
+			isa = PBXGroup;
+			children = (
+				31AEADC329796ECB004F3602 /* ProductsTVCell.xib */,
+				31AEADC229796ECB004F3602 /* ProductsTVCell.swift */,
+			);
+			path = ProductsTVCell;
+			sourceTree = "<group>";
+		};
+		31DDC56E297D24CF0022AB59 /* ProductsTVHeaderCell */ = {
+			isa = PBXGroup;
+			children = (
+				31AEADC729797127004F3602 /* ProductsTVHeaderCell.xib */,
+				31AEADC629797127004F3602 /* ProductsTVHeaderCell.swift */,
+			);
+			path = ProductsTVHeaderCell;
+			sourceTree = "<group>";
+		};
+		31DDC56F297D24DC0022AB59 /* ProductCVCell */ = {
+			isa = PBXGroup;
+			children = (
+				31AEADCB297974A5004F3602 /* ProductCVCell.xib */,
+				31AEADCA297974A5004F3602 /* ProductCVCell.swift */,
+			);
+			path = ProductCVCell;
+			sourceTree = "<group>";
+		};
 		31F9EB0429741E5400F35F5E /* Filter */ = {
 			isa = PBXGroup;
 			children = (
@@ -593,20 +656,13 @@
 		31F9EB4D29757B3F00F35F5E /* View */ = {
 			isa = PBXGroup;
 			children = (
-				31F9EB54297582D400F35F5E /* ImageSliderCVCell.swift */,
-				31F9EB55297582D400F35F5E /* ImageSliderCVCell.xib */,
-				31F9EB58297582E800F35F5E /* VideoSliderCVCell.swift */,
-				31F9EB59297582E800F35F5E /* VideoSliderCVCell.xib */,
-				31AEADBA29796378004F3602 /* BiddersTVCell.swift */,
-				31AEADBB29796378004F3602 /* BiddersTVCell.xib */,
-				31AEADBE297963CA004F3602 /* BiddersTVHeaderCell.swift */,
-				31AEADBF297963CA004F3602 /* BiddersTVHeaderCell.xib */,
-				31AEADC229796ECB004F3602 /* ProductsTVCell.swift */,
-				31AEADC329796ECB004F3602 /* ProductsTVCell.xib */,
-				31AEADC629797127004F3602 /* ProductsTVHeaderCell.swift */,
-				31AEADC729797127004F3602 /* ProductsTVHeaderCell.xib */,
-				31AEADCA297974A5004F3602 /* ProductCVCell.swift */,
-				31AEADCB297974A5004F3602 /* ProductCVCell.xib */,
+				31DDC56F297D24DC0022AB59 /* ProductCVCell */,
+				31DDC56E297D24CF0022AB59 /* ProductsTVHeaderCell */,
+				31DDC56D297D24C20022AB59 /* ProductsTVCell */,
+				31DDC56C297D24B50022AB59 /* BiddersTVHeaderCell */,
+				31DDC56B297D24A80022AB59 /* BiddersTVCell */,
+				31DDC56A297D249A0022AB59 /* VideoSliderCVCell */,
+				31DDC569297D247F0022AB59 /* ImageSliderCVCell */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -717,7 +773,7 @@
 				};
 			};
 			buildConfigurationList = 314973E829730F4400CFE6E9 /* Build configuration list for PBXProject "MPortal" */;
-			compatibilityVersion = "Xcode 14.0";
+			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (

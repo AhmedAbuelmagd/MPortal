@@ -8,6 +8,7 @@
 
 import Foundation
 
+// MARK: - Ads_banners
 struct Ads_banners: Codable {
     var img: String?
     var media_type: String?

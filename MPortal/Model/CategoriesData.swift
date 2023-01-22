@@ -8,6 +8,7 @@
 
 import Foundation
 
+// MARK: - CategoriesData
 struct CategoriesData: Codable {
     var categories: [Categories]?
     var statistics: Statistics?

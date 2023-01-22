@@ -8,6 +8,7 @@
 
 import Foundation
 
+// MARK: - ErrorModel
 struct ErrorModel: Codable, LocalizedError {
     var message: String?
     var errorDescription: String?{

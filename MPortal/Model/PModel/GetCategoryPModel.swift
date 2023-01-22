@@ -8,6 +8,7 @@
 
 import Foundation
 
+// MARK: - GetCategoryPModel
 struct GetCategoryPModel: Codable {
     var cat: String?
 }

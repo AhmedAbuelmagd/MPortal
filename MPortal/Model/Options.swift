@@ -8,6 +8,7 @@
 
 import Foundation
 
+// MARK: - Options
 struct Options: Codable {
     var id: Int?
     var name: String?

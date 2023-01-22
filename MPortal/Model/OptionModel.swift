@@ -8,6 +8,7 @@
 
 import Foundation
 
+// MARK: - OptionModel
 struct OptionModel: Codable {
     var id: Int?
     var name: String?

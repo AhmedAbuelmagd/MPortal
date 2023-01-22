@@ -8,6 +8,7 @@
 
 import Foundation
 
+// MARK: - PropertiesModel
 struct PropertiesModel: Codable {
     var id: Int?
     var name: String?

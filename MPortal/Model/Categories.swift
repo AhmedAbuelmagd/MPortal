@@ -8,6 +8,7 @@
 
 import Foundation
 
+// MARK: - Categories
 struct Categories: Codable {
     var id: Int?
     var name: String?
