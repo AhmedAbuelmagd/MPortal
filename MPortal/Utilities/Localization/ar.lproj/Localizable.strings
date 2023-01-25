@@ -38,6 +38,30 @@
 "continueBtn"="إستمرار";
 "butNowBtn"="شراء الآن";
 "withdrawalBtn"="إنسحاب";
+"bidderNameLbl"="إسم المزايد";
+"showAllLbl"="عرض الكل";
+"biddersLbl"="المزايدون";
+"similarProductsLbl"="منتجات مشابهة";
+"productDescriptionLbl"="سيارة سريعة بى ام دابليو تصنيع  2021 حالته جديدة";
+"riyalLbl"="ريال";
+"startAfterLbl"="يبدأ بعد";
+"auctionStartLbl"="بداية المزاد";
+"dayLbl"="يوم";
+"hourLbl"="س";
+"minuteLbl"="د";
+"liveAuctionLbl"="مزاد مباشر";
+"auctionNameLbl"="إسم المزاد";
+"auctionDetailsLbl"="تفاصيل المزاد";
+"auctionRateLbl"="تقييم المزاد";
+"auctionCurrentPriceLbl"="القيمة الحالية للمزاد";
+"auctionCurrentPriceTaxLbl"="القيمة الحالية بعد الضريبة";
+
+"auctionDateLbl"="بتاريخ";
+"auctionStartAfterLbl"="المزاد يبدأ بعد";
+"fullHourLbl"="ساعة";
+"fullMinuteLbl"="دقيقة";
+"auctionPriceNowLbl"="سعر الشراء الان";
+
 //MARK: - TxtFields Enum
 "writePriceTF"="اكتب المبلغ";
 

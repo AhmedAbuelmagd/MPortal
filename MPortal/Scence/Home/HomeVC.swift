@@ -27,6 +27,7 @@ class HomeVC: UIViewController {
         self.homeVM = homeVM
     }
     
+    var removedChildIDs: [Int] = []
     required init?(coder: NSCoder) { fatalError(ERRORS.VIEW_MODEL_ERROR.title) }
     
     override func viewDidLoad() {
@@ -81,13 +82,6 @@ extension HomeVC{
             for index in 0..<properties.count{
                 properties[index].categoryParentId = self.categoryId
             }
-            for index in 0..<self.homeVM.propertiesList.value.count{
-                if (self.homeVM.propertiesList.value[index].categoryParentId ?? 0) == self.categoryId{
-                    mainQueue {
-                        self.homeVM.propertiesList.value.remove(at: index)
-                    }
-                }
-            }
             self.homeVM.propertiesList.value.insert(contentsOf: properties, at: self.insertedCatId + 1)
             self.homeTV.reloadData()
         }
@@ -113,9 +107,16 @@ extension HomeVC: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return tVCellHeight
+        return UITableView.automaticDimension
     }
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0.000001
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0.000001
+    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue() as HomeTVCell
         switch indexPath.section{
@@ -144,7 +145,7 @@ extension HomeVC: HomeTVCellDeleget{
             default: print("")
             }
         case 1:
-            self.categoryId = self.homeVM.propertiesList.value[index].id ?? 0
+            
             if (self.homeVM.propertiesList.value[index].options != nil) && self.homeVM.propertiesList.value[index].options?.count != 0{
                 coordinator?.filter(title: homeVM.propertiesList.value[index].name ?? "", delegate: self, type: .Options, optionsData: self.homeVM.propertiesList.value[index].options, CategoryIndex: index, categoryId: category.id)
             }
@@ -155,35 +156,60 @@ extension HomeVC: HomeTVCellDeleget{
 }
 extension HomeVC: FilterDeleget{
     func optionClicked(option: [Children], CategoryIndex: Int, child: Bool) {
+        self.categoryId = self.homeVM.propertiesList.value[CategoryIndex].id ?? 0
+        removeAllAppendedChildOptionWithParentId(parentId: self.categoryId)
         for index in 0..<option.count{
             if option[index].isSelected == true{
-                if (option[index].id ?? 0) == 222{ //if user choose other option
+                if (option[index].id ?? 0) == 222{
                     self.homeVM.propertiesList.value[CategoryIndex].options = option
-                    self.homeVM.propertiesList.value.insert(addedProperty, at: CategoryIndex + 1)
-                    self.homeVM.propertiesList.value[CategoryIndex].selectedId = 222
                     self.homeVM.propertiesList.value[CategoryIndex].selectedOption = option[index].name ?? ""
-                }else{
-                    if (self.homeVM.propertiesList.value[CategoryIndex].selectedId ?? 0) == 222{
-                        self.homeVM.propertiesList.value[CategoryIndex].selectedOption = option[index].name ?? ""
-                        self.homeVM.propertiesList.value[CategoryIndex].options = option
-                        self.homeVM.propertiesList.value.remove(at: CategoryIndex+1)
-                    }else{
-                        
-                        self.homeVM.propertiesList.value[CategoryIndex].selectedOption = option[index].name ?? ""
-                        self.homeVM.propertiesList.value[CategoryIndex].options = option
-                        if child{
-                            homeTV.reloadData()
-                            self.insertedCatId = CategoryIndex
-                            homeVM.optionId = option[index].id
-                            homeVM.getOptionsChild()
+                    self.homeVM.propertiesList.value[CategoryIndex].isOther = true
+                    for (index, value) in self.homeVM.propertiesList.value.enumerated() {
+                        if self.homeVM.propertiesList.value[index].categoryParentId == self.categoryId {
+                            mainQueue {
+                                self.homeVM.propertiesList.value.remove(at: index)
+                            }
                         }
+                    }
+                }else{
+                    self.homeVM.propertiesList.value[CategoryIndex].options = option
+                    self.homeVM.propertiesList.value[CategoryIndex].selectedOption = option[index].name ?? ""
+                    self.homeVM.propertiesList.value[CategoryIndex].isOther = false
+                    if child{
+                        homeTV.reloadData()
+                        self.insertedCatId = CategoryIndex
+                        homeVM.optionId = option[index].id
+                        homeVM.getOptionsChild()
                     }
                 }
             }
         }
         homeTV.reloadData()
     }
-    
+    private func removeAllAppendedChildOptionWithParentId(parentId: Int) {
+        removedChildIDs = getParentRemovedChildIds(parentId: parentId)
+        getChildForParentRemovedIds(removedIds: removedChildIDs, list: self.homeVM.propertiesList.value)
+        self.homeVM.propertiesList.value = self.homeVM.propertiesList.value.filter { !removedChildIDs.contains($0.categoryParentIdValue) }
+        homeTV.reloadData()
+    }
+    private func getParentRemovedChildIds(parentId: Int) -> [Int] {
+        return self.homeVM.propertiesList.value.filter({$0.categoryParentIdValue == parentId}).map({$0.categoryParentIdValue})
+    }
+    private func getChildForParentRemovedIds(removedIds: [Int], list: [PropertiesModel]){
+        var newArr: [Int] = []
+        for item in list {
+            for id in removedIds {
+                if item.categoryParentIdValue == id {
+                    newArr.append(item.id ?? 0)
+                }
+            }
+        }
+        removedChildIDs += newArr
+        if newArr.isEmpty {
+            return
+        }
+        return getChildForParentRemovedIds(removedIds: newArr, list: list)
+    }
     func categoryClicked(categories: [Categories]) {
         homeVM.categoriesData.value.categories = categories
         for index in 0..<categories.count{
@@ -196,7 +222,6 @@ extension HomeVC: FilterDeleget{
         }
         homeTV.reloadData()
     }
-    
     func subCategoryClicked(childrens: [Children]) {
         for index in 0..<(childrens.count){
             if childrens[index].isSelected == true{

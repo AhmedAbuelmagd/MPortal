@@ -56,7 +56,14 @@ class HomeVM: HomeVMProtocol {
                 switch Result{
                 case .success(let response):
                     if let data = response.data {
-                        self.optionsData.value = data
+                        
+                        //
+                        for index in 0..<(data.count){
+                            if data[index].options?.count != 0{
+                                data[index].options?.insert(Children(id: 222, name: LBLs.OTHER.title, child: false), at: 0)
+                                self.optionsData.value = data
+                            }
+                        }
                     }
                 case .failure(let error): self.onShowError?(error.localizedDescription)
                 }

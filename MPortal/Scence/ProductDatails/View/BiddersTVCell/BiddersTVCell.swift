@@ -15,7 +15,7 @@ class BiddersTVCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        bidderNameLbl.customLabel(color: .C44215D, size: .size_14, font: .W400, text: "إسم المزايد")
+        bidderNameLbl.customLabel(color: .C44215D, size: .size_14, font: .W400, text: LBLs.BIDDER_NAME.title)
         timeLbl.customLabel(color: .C808080, size: .size_12, font: .W300, text: "13:59:00")
         // Initialization code
     }

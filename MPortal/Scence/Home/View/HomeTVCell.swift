@@ -16,9 +16,16 @@ class HomeTVCell: UITableViewCell {
 
     @IBOutlet weak var txtFiels: UITextField!
     @IBOutlet weak var mainView: UIView!
+    @IBOutlet weak var othersView: UIView!
+    @IBOutlet weak var otherMainView: UIView!
+    
     @IBOutlet weak var arrowImg: UIImageView!
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var chooseCategoriesBtn: UIButton!
+    
+    @IBOutlet weak var otherLbl: UILabel!
+    @IBOutlet weak var otherTxtField: UITextField!
+    
     
     weak var delegte: HomeTVCellDeleget?
     private var index = 0
@@ -26,8 +33,12 @@ class HomeTVCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        mainView.addBorder()
-        mainView.addRadius(radius: 5)
+        for view in [mainView, otherMainView]{
+            view?.addBorder()
+            view?.addRadius(radius: 5)
+            otherLbl.customLabel(color: .C515D76, size: .size_13, font: .W400, text: LBLs.OTHER.title)
+            otherTxtField.customTxtField(color: .C515D76, size: .size_13, font: .W400, placeholder: "\(LBLs.SELECT.title)\(LBLs.OTHER.title)", text: "")
+        }
     }
     
     @IBAction func chooseCategoriesBtnClicked(_ sender: UIButton) {
@@ -55,6 +66,8 @@ class HomeTVCell: UITableViewCell {
         }
         titleLbl.customLabel(color: .C515D76, size: .size_13, font: .W400, text: cellData.name ?? "")
         txtFiels.customTxtField(color: .C515D76, size: .size_13, font: .W400, placeholder: "\(LBLs.SELECT.title)\(cellData.name ?? "")", text: cellData.selectedOption ?? "", isPassword: false)
+        self.othersView.isHidden = cellData.isOther == nil || cellData.isOther == false ? true:false
+
     }
     
 }

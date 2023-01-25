@@ -134,7 +134,16 @@ extension FilterVC: UITableViewDataSource, UITableViewDelegate{
                 categories[index].isSelected = false
             }
             categories[indexPath.row].isSelected = true
-            delegte?.categoryClicked(categories: categories)
+            
+            let categoryId = categories[indexPath.row].id
+            for catIndex in 0..<(filterList?.categories?.count ?? 0){
+                if filterList?.categories?[catIndex].id == categoryId{
+                    filterList?.categories?[catIndex].isSelected = true
+                }else{
+                    filterList?.categories?[catIndex].isSelected = false
+                }
+            }
+            delegte?.categoryClicked(categories: filterList?.categories ?? [])
             
         case .SubCategory:
             for index in 0..<(childrens.count){
@@ -142,13 +151,41 @@ extension FilterVC: UITableViewDataSource, UITableViewDelegate{
             }
             childrens[indexPath.row].isSelected = true
             
-            delegte?.subCategoryClicked(childrens: childrens)
+            
+            //
+            let categoryId = childrens[indexPath.row].id
+            for catIndex in 0..<(filterChildren?.count ?? 0){
+                if filterChildren?[catIndex].id == categoryId{
+                    filterChildren?[catIndex].isSelected = true
+                }else{
+                    filterChildren?[catIndex].isSelected = false
+                }
+            }
+            delegte?.subCategoryClicked(childrens: filterChildren ?? [])
+            
+            
+            
+            
         case .Options:
             for index in 0..<(options.count){
                 options[index].isSelected = false
             }
             options[indexPath.row].isSelected = true
-            delegte?.optionClicked(option: options, CategoryIndex: CategoryIndex ?? 0, child: options[indexPath.row].child ?? false)
+            //
+            let categoryId = options[indexPath.row].id
+            
+            for catIndex in 0..<(optionsData?.count ?? 0){
+                if optionsData?[catIndex].id == categoryId{
+                    optionsData?[catIndex].isSelected = true
+                }else{
+                    optionsData?[catIndex].isSelected = false
+                }
+            }
+            
+            
+            //optionsData
+            
+            delegte?.optionClicked(option: optionsData ?? [], CategoryIndex: CategoryIndex ?? 0, child: options[indexPath.row].child ?? false)
         }
         
         filterTV.reloadData()

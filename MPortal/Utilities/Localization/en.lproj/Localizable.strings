@@ -38,6 +38,29 @@
 "continueBtn"="Continue";
 "butNowBtn"="Buy now";
 "withdrawalBtn"="Withdraw";
+"bidderNameLbl"="Bidder Name";
+"showAllLbl"="Show All";
+"biddersLbl"="Bidders";
+"similarProductsLbl"="Similar Products";
+"productDescriptionLbl"="Fast BMW, made in 2021, new condition.";
+"riyalLbl"="Riyal";
+"startAfterLbl"="start after";
+"auctionStartLbl"="Auction start";
+"dayLbl"="day";
+"hourLbl"="h";
+"minuteLbl"="m";
+"liveAuctionLbl"="live auction";
+"auctionNameLbl"="Auction name";
+"auctionDetailsLbl"="Auction Details";
+"auctionRateLbl"="Auction Rate";
+"auctionCurrentPriceLbl"="Current price";
+"auctionCurrentPriceTaxLbl"="current price with tax";
+
+"auctionDateLbl"="auction date";
+"auctionStartAfterLbl"="auction start sfter";
+"fullHourLbl"="hour";
+"fullMinuteLbl"="minute";
+"auctionPriceNowLbl"="Price now";
 
 //MARK: - TxtFields Enum
 "writePriceTF"="write price";

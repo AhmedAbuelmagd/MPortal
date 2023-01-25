@@ -20,8 +20,8 @@ class ProductsTVHeaderCell: UITableViewHeaderFooterView {
         if MOLHLanguage.isArabic(){
             self.arrowImg.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
         }
-        biddersLbl.customLabel(color: .C1D1D1D, size: .size_14, font: .W500, text: "منتجات مشابهة")
-        showAllLbl.customLabel(color: .CD20653, size: .size_13, font: .W400, text: "عرض الكل")
+        biddersLbl.customLabel(color: .C1D1D1D, size: .size_14, font: .W500, text: LBLs.SIMILAR_PRODUCTS.title)
+        showAllLbl.customLabel(color: .CD20653, size: .size_13, font: .W400, text: LBLs.SHOW_ALL.title)
         // Initialization code
     }
 }
